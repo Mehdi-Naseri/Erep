@@ -1,0 +1,72 @@
+﻿@model Identity.ViewModels.ViewModels.RegisterViewModelwithName
+
+@{
+    ViewBag.Title = "ساخت کاربر";
+}
+
+<div class="modal-header alert-info">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        <span class="glyphicon glyphicon-remove"></span></button>
+    <h3 class="modal-title">@ViewBag.Title</h3>
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="modal-body">
+
+        <div class="form-horizontal">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary()
+
+            @*<fieldset>
+                <legend>ساخت حساب کاربری</legend>*@
+            <div class="form-group Meh-required">
+                @Html.LabelFor(model => model.UserName, new {@class = "control-label col-md-3"})
+                <div class="col-md-9">
+                    @Html.TextBoxFor(model => model.UserName, new {@class = "form-control", dir = "ltr"})
+                    @Html.ValidationMessageFor(model => model.UserName)
+                </div>
+            </div>
+            <div class="form-group Meh-required">
+                @Html.LabelFor(model => model.Password, new {@class = "control-label col-md-3"})
+                <div class="col-md-9">
+                    @Html.PasswordFor(model => model.Password, new {@class = "form-control", dir = "ltr"})
+                    @Html.ValidationMessageFor(model => model.Password)
+                </div>
+            </div>
+            <div class="form-group Meh-required">
+                @Html.LabelFor(model => model.ConfirmPassword, new {@class = "control-label col-md-3"})
+                <div class="col-md-9">
+                    @Html.PasswordFor(model => model.ConfirmPassword, new {@class = "form-control", dir = "ltr"})
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, new {@class = "control-label col-md-3"})
+                <div class="col-md-9">
+                    @Html.TextBoxFor(model => model.Email, new {@class = "form-control", dir = "ltr", type = "email"})
+                    @Html.ValidationMessageFor(model => model.Email)
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal-footer">
+        <span id="progress" class="text-center" style="display: none;">
+            <img src="~/Content/Meh/Images/wait.gif" alt="wait" />
+            ارسال ...
+        </span>
+
+        <input class="btn btn-primary" type="submit" value="ذخیره"/>
+        <button class="btn btn-warning" data-dismiss="modal">بستن</button>
+    </div>
+}
+
+@*<div>
+        @Html.ActionLink("بازگشت به لیست", "AllUsers")
+    </div>*@
+
+@*@section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@

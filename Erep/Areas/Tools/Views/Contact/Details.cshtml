@@ -1,0 +1,55 @@
+﻿@model Erep.DomainClasses.Models.Contact
+
+@{
+    ViewBag.Title = "جزئیات";
+}
+
+<h2>جزئیات</h2>
+
+<div>
+    <h4>پیشنهاد</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AttachmentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AttachmentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MessageDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MessageDateTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("تصحیح", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("بازگشت به لیست", "Index")
+</p>

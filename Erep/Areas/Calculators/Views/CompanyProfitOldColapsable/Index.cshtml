@@ -1,0 +1,252 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>سود کارخانه ها</h2>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse0-1">
+                    کارخانه های مواد اولیه غذا
+                </a>
+            </h4>
+        </div>
+        <div id="collapse0-1" class="panel-collapse collapse in" role="tabpanel">
+            <div class="panel-body">
+                @*شروع آکاردئون داخلی کارخانه های مواد اولیه غذا*@
+                @Html.Partial("_FoodRawFactories")
+                @*پایان آکاردئون داخلی کارخانه های مواد اولیه غذا*@
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse0-2">
+                    کارخانه های مواد اولیه اسلحه
+                </a>
+            </h4>
+        </div>
+        <div id="collapse0-2" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+                @*شروع آکاردئون داخلی کارخانه های مواد اولیه خانه*@
+                @Html.Partial("_WeaponRawFactories")
+                @*پایان آکاردئون داخلی کارخانه های مواد اولیه خانه*@
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse0-3">
+                    کارخانه های مواد اولیه خانه
+                </a>
+            </h4>
+        </div>
+        <div id="collapse0-3" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+                @*شروع آکاردئون داخلی کارخانه های مواد اولیه خانه*@
+                @Html.Partial("_HouseRawFactories")
+                @*پایان آکاردئون داخلی کارخانه های مواد اولیه*@
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading0-4">
+            <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse0-4">
+                    کارخانه های غذا
+                </a>
+            </h4>
+        </div>
+        <div id="collapse0-4" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+                @*شروع آکاردئون داخلی کارخانه های غذا*@
+                @Html.Partial("_FoodFactories")
+                @*پایان آکاردئون داخلی کارخانه های غذا*@
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading0-5">
+            <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse0-5">
+                    کارخانه های اسلحه
+                </a>
+            </h4>
+        </div>
+        <div id="collapse0-5" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+                @*شروع آکاردئون داخلی اسلحه*@
+                @Html.Partial("_WeaponFactories")
+                @*پایان آکاردئون داخلی اسلحه*@
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading0-6">
+            <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse0-6">
+                    کارخانه های اسلحه
+                </a>
+            </h4>
+        </div>
+        <div id="collapse0-6" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+                @*شروع آکاردئون داخلی خانه*@
+                @Html.Partial("_HouseFactories")
+                @*پایان آکاردئون داخلی خانه*@
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_Input")
+@Html.Partial("_Result")
+
+@*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*@
+@section Styles{
+    <style>
+        .M-TextBoxHolder {
+            max-width: 200px;
+            /*max-width: 16%;*/
+            direction: ltr;
+        }
+
+        td {
+            direction: ltr;
+        }
+    </style>
+}
+
+@*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*@
+@section Scripts{
+    @*تبدیل تکست باکس به عددی*@
+    <script src="~/Scripts/Meh/bootstrap.touchspin.js"></script>
+    <script>
+        $(function () {
+            $("input[type='text']:not(.M-Bounes)").TouchSpin({
+                step: 0.01,
+                max: 1000000,
+                decimals: 2,
+                initval: 0
+                //,
+                //postfix : "$"
+            });
+            $(".M-Bounes").TouchSpin({
+                step: 10,
+                max: 100,
+                decimals: 0,
+                initval: 0
+            });
+        });
+    </script>
+    @*<script>
+            $(function () {
+                var ShowResult = function () {
+                    var WorkingTax = $("#WorkingTax").val();
+                    var FoodBounes = $("#FoodBounes").val();
+                    var WeaponBounes = $("#WeaponBounes").val();
+                    var HouseBounes = $("#HouseBounes").val();
+                    var FoodRawPrice = $("#FoodRawPrice").val();
+                    var WeaponRawPrice = $("#WeaponRawPrice").val();
+                    var HouseRawPrice = $("#HouseRawPrice").val();
+                    var FoodPriceQ1 = $("#FoodPriceQ1").val();
+                    var FoodPriceQ2 = $("#FoodPriceQ2").val();
+                    var FoodPriceQ3 = $("#FoodPriceQ3").val();
+                    var FoodPriceQ4 = $("#FoodPriceQ4").val();
+                    var FoodPriceQ5 = $("#FoodPriceQ5").val();
+                    var FoodPriceQ6 = $("#FoodPriceQ6").val();
+                    var FoodPriceQ7 = $("#FoodPriceQ7").val();
+                    var WeaponPriceQ1 = $("#WeaponPriceQ1").val();
+                    var WeaponPriceQ2 = $("#WeaponPriceQ2").val();
+                    var WeaponPriceQ3 = $("#WeaponPriceQ3").val();
+                    var WeaponPriceQ4 = $("#WeaponPriceQ4").val();
+                    var WeaponPriceQ5 = $("#WeaponPriceQ5").val();
+                    var WeaponPriceQ6 = $("#WeaponPriceQ6").val();
+                    var WeaponPriceQ7 = $("#WeaponPriceQ7").val();
+                    var HousePriceQ1 = $("#HousePriceQ1").val();
+                    var HousePriceQ2 = $("#HousePriceQ2").val();
+                    var HousePriceQ3 = $("#HousePriceQ3").val();
+                    var HousePriceQ4 = $("#HousePriceQ4").val();
+                    var HousePriceQ5 = $("#HousePriceQ5").val();
+
+                    //محاسبه سود کارخانه ها
+
+                    var FoodRaw1 = (((1 + FoodBounes) / 100) * 35 * FoodRawPrice) - WorkingTax;
+                    var FoodRaw2 = (((1 + FoodBounes) / 100) * 70 * FoodRawPrice) - WorkingTax;
+                    var FoodRaw3 = (((1 + FoodBounes) / 100) * 125 * FoodRawPrice) - WorkingTax;
+                    var FoodRaw4 = (((1 + FoodBounes) / 100) * 175 * FoodRawPrice) - WorkingTax;
+                    var FoodRaw5 = (((1 + FoodBounes) / 100) * 250 * FoodRawPrice) - WorkingTax;
+                    var WeaponRaw1 = (((1 + WeaponBounes) / 100) * 35 * WeaponRawPrice) - WorkingTax;
+                    var WeaponRaw2 = (((1 + WeaponBounes) / 100) * 70 * WeaponRawPrice) - WorkingTax;
+                    var WeaponRaw3 = (((1 + WeaponBounes) / 100) * 125 * WeaponRawPrice) - WorkingTax;
+                    var WeaponRaw4 = (((1 + WeaponBounes) / 100) * 175 * WeaponRawPrice) - WorkingTax;
+                    var WeaponRaw5 = (((1 + WeaponBounes) / 100) * 250 * WeaponRawPrice) - WorkingTax;
+                    var HouseRaw1 = ((HouseBounes / 100) * 35 * HouseRawPrice) - WorkingTax;
+                    var HouseRaw2 = ((HouseBounes / 100) * 70 * HouseRawPrice) - WorkingTax;
+                    var HouseRaw3 = ((HouseBounes / 100) * 125 * HouseRawPrice) - WorkingTax;
+                    var HouseRaw4 = ((HouseBounes / 100) * 175 * HouseRawPrice) - WorkingTax;
+                    var HouseRaw5 = ((HouseBounes / 100) * 250 * HouseRawPrice) - WorkingTax;
+                    var FoodQ1 = (((1 + FoodBounes) / 100) * ((100 * FoodPriceQ1) - (100 * FoodRawPrice))) - WorkingTax;
+                    var FoodQ2 = (((1 + FoodBounes) / 100) * ((100 * FoodPriceQ2) - (200 * FoodRawPrice))) - WorkingTax;
+                    var FoodQ3 = (((1 + FoodBounes) / 100) * ((100 * FoodPriceQ3) - (300 * FoodRawPrice))) - WorkingTax;
+                    var FoodQ4 = (((1 + FoodBounes) / 100) * ((100 * FoodPriceQ4) - (400 * FoodRawPrice))) - WorkingTax;
+                    var FoodQ5 = (((1 + FoodBounes) / 100) * ((100 * FoodPriceQ5) - (500 * FoodRawPrice))) - WorkingTax;
+                    var FoodQ6 = (((1 + FoodBounes) / 100) * ((100 * FoodPriceQ6) - (600 * FoodRawPrice))) - WorkingTax;
+                    var FoodQ7 = (((1 + FoodBounes) / 100) * ((100 * FoodPriceQ7) - (1000 * FoodRawPrice))) - WorkingTax;
+                    var WeaponQ1 = (((1 + WeaponBounes) / 100) * ((10 * WeaponPriceQ1) - (100 * WeaponRawPrice))) - WorkingTax;
+                    var WeaponQ2 = (((1 + WeaponBounes) / 100) * ((10 * WeaponPriceQ2) - (200 * WeaponRawPrice))) - WorkingTax;
+                    var WeaponQ3 = (((1 + WeaponBounes) / 100) * ((10 * WeaponPriceQ3) - (300 * WeaponRawPrice))) - WorkingTax;
+                    var WeaponQ4 = (((1 + WeaponBounes) / 100) * ((10 * WeaponPriceQ4) - (400 * WeaponRawPrice))) - WorkingTax;
+                    var WeaponQ5 = (((1 + WeaponBounes) / 100) * ((10 * WeaponPriceQ5) - (500 * WeaponRawPrice))) - WorkingTax;
+                    var WeaponQ6 = (((1 + WeaponBounes) / 100) * ((10 * WeaponPriceQ6) - (600 * WeaponRawPrice))) - WorkingTax;
+                    var WeaponQ7 = (((1 + WeaponBounes) / 100) * ((10 * WeaponPriceQ7) - (1000 * WeaponRawPrice))) - WorkingTax;
+                };
+                //$("input[type=text]").change(function () {
+                //    ShowResult();
+                //});
+                //ShowResult();
+            });
+
+        </script>*@
+
+    <script>
+        $(function () {
+            //    $(".form-horizontal").appendTo("#collapse1-1 .panel-body");
+            //});
+            $('div[id^="collapse"] div[id^="collapse"]').on('show.bs.collapse', function () {
+                $(".form-horizontal label").hide();
+                $(".form-horizontal .M-TextBoxHolder").hide();
+                $(this).children(".panel-body").append($('.form-horizontal'));
+
+
+            });
+            $('div[id^="collapse"] div[id^="collapse1-1"]').on('show.bs.collapse', function () {
+                //نمایش فیلدهای لازم
+                $(this).find("label[for='WorkingTax']").show();
+                $(this).find("#WorkingTax").parent().parent().show();
+                $(this).find("label[for='FoodBounes']").show();
+                $(this).find("#FoodBounes").parent().parent().show();
+                $(this).find("label[for='FoodRawPrice']").show();
+                $(this).find("#FoodRawPrice").parent().parent().show();
+                //محاسبه مقدار سود
+                var WorkingTax = $("#WorkingTax").val();
+                var FoodBounes = $("#FoodBounes").val();
+                var FoodRawPrice = $("#FoodRawPrice").val();
+                var FoodRaw1 = (((1 + FoodBounes) / 100) * 35 * FoodRawPrice) - WorkingTax;
+                //نمایش نتیجه
+                $("#DailyProfit label:eq(0)").replaceWith("<label>" + FoodRaw1.toFixed(3) + "</label>");
+                //$("DailyProfit label:eq(0)").show();
+                $(this).children(".panel-body").append($('#Result'));
+            });
+
+        });
+    </script>
+}

@@ -1,0 +1,41 @@
+﻿@*@model Portal.Models.UserProfile*@
+
+
+<div class="modal-header alert-info">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        <span class="glyphicon glyphicon-remove"></span></button>
+    <h3 class="modal-title">اضافه کردن کاربر به گروه</h3>
+</div>
+
+
+@using (Html.BeginForm("AddUserRole", "Identity", FormMethod.Post, new {@class = "form-horizontal"}))
+{
+    <div class="modal-body">
+        <div class="form-horizontal">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary()
+
+            <div class="form-group Meh-required">
+                <label class="control-label col-md-3" for="userName">نام کاربری</label>
+                <div class="col-md-9">
+                    @Html.DropDownList("userName", new SelectList(ViewBag.UserNames), new {@class = "form-control"})
+                </div>
+            </div>
+            <div class="form-group Meh-required">
+                <label class="control-label col-md-3" for="roleName">نام گروه</label>
+                <div class="col-md-9">
+                    @Html.DropDownList("roleName", new SelectList(ViewBag.RoleNames), new {@class = "form-control"})
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <span id="progress" class="text-center" style="display: none;">
+            <img src="~/Content/Meh/Images/wait.gif" alt="wait" />
+            Sending ...
+        </span>
+
+        <input class="btn btn-primary" type="submit" value="ذخیره"/>
+        <button class="btn btn-warning" data-dismiss="modal">بستن</button>
+    </div>
+}

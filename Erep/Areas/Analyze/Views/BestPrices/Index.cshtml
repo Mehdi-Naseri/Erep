@@ -1,0 +1,329 @@
+﻿@{
+    ViewBag.Title = "بهترین قیمتها";
+}
+
+<h2>بهترین قیمتها</h2>
+
+<div id="Marketplace" style="background-color:azure">
+    <div class="row">
+        <h4>انتخاب کالا</h4>
+    </div>
+    <div id="MarketplaceMain" class="row">
+        <div>
+            <img src="~/Files/Images/Products/Food_default.png" id="Product1" />
+        </div>
+        <div>
+            <img src="~/Files/Images/Products/Weapon_default.png" id="Product2" />
+        </div>
+        <div>
+            <img src="~/Files/Images/Products/Ticket_default.png" id="Product3" />
+        </div>
+        <div>
+            <img src="~/Files/Images/Products/House_default.png" id="Product4" />
+        </div>
+        <div>
+            <img src="~/Files/Images/Products/FoodRawMaterial_default.png" id="Product5" />
+        </div>
+        <div>
+            <img src="~/Files/Images/Products/WeaponRawMaterial_default.png" id="Product6" />
+        </div>
+        <div>
+            <img src="~/Files/Images/Products/HouseRawMaterial_default.png" id="Product7" />
+        </div>
+    </div>
+    <div id="MarketplaceQuality" class="row">
+        <h4 class="row">انتخاب کیفیت</h4>
+        @*<div id="FoodQuality" style="visibility:hidden">*@
+        <div id="MarketplaceQualitySelector" class="row">
+            <div id="FoodQuality">
+                <div>
+                    <img src="~/Files/Images/Products/Food_q1_90x90.png" id="Product11" />
+                </div>
+                <div>
+                    <img src="~/Files/Images/Products/Food_q2_90x90.png" id="Product12" />
+                </div>
+                <div>
+                    <img src="~/Files/Images/Products/Food_q3_90x90.png" id="Product13" />
+                </div>
+                <div>
+                    <img src="~/Files/Images/Products/Food_q5_90x90.png" id="Product14" />
+                </div>
+                <div>
+                    <img src="~/Files/Images/Products/Food_q4_90x90.png" id="Product15" />
+                </div>
+                <div>
+                    <img src="~/Files/Images/Products/Food_q6_90x90.png" id="Product16" />
+                </div>
+                <div>
+                    <img src="~/Files/Images/Products/Food_q7_90x90.png" id="Product17" />
+                </div>
+            </div>
+            <div id="WeaponQuality">
+                <div>
+                    <img src="~/Files/Images/Products/Weapon_q1_90x90.png" id="Product21" />
+                </div>
+                <div>
+                    <img src="~/Files/Images/Products/Weapon_q2_90x90.png" id="Product22" />
+                </div>
+                <div>
+                    <img src="~/Files/Images/Products/Weapon_q3_90x90.png" id="Product23" />
+                </div>
+                <div>
+                    <img src="~/Files/Images/Products/Weapon_q4_90x90.png" id="Product24" />
+                </div>
+                <div>
+                    <img src="~/Files/Images/Products/Weapon_q5_90x90.png" id="Product25" />
+                </div>
+                <div>
+                    <img src="~/Files/Images/Products/Weapon_q6_90x90.png" id="Product26" />
+                </div>
+                <div>
+                    <img src="~/Files/Images/Products/Weapon_q7_90x90.png" id="Product27" />
+                </div>
+            </div>
+            <div id="TicketQuality">
+                <div>
+                    <img src="~/Files/Images/Products/Ticket_q5_90x90.png" id="Product31" />
+                </div>
+                <div>
+                    <img src="~/Files/Images/Products/Ticket_q4_90x90.png" id="Product32" />
+                </div>
+                <div>
+                    <img src="~/Files/Images/Products/Ticket_q3_90x90.png" id="Product33" />
+                </div>
+                <div>
+                    <img src="~/Files/Images/Products/Ticket_q2_90x90.png" id="Product34" />
+                </div>
+                <div>
+                    <img src="~/Files/Images/Products/Ticket_q1_90x90.png" id="Product35" />
+                </div>
+            </div>
+            <div id="HouseQuality">
+                <div>
+                    <img src="~/Files/Images/Products/House_q1_90x90.png" id="Product41" />
+                </div>
+                <div>
+                    <img src="~/Files/Images/Products/House_q2_90x90.png" id="Product42" />
+                </div>
+                <div>
+                    <img src="~/Files/Images/Products/House_q3_90x90.png" id="Product43" />
+                </div>
+                <div>
+                    <img src="~/Files/Images/Products/House_q4_90x90.png" id="Product44" />
+                </div>
+                <div>
+                    <img src="~/Files/Images/Products/House_q5_90x90.png" id="Product45" />
+                </div>
+                <div>
+                    <img src="~/Files/Images/Products/House_q6_90x90.png" id="Product46" />
+                </div>
+                <div>
+                    <img src="~/Files/Images/Products/House_q7_90x90.png" id="Product47" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div id="PartaialViewResult">
+</div>
+
+
+
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header alert-danger">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title ">دریافت اطلاعات</h4>
+            </div>
+            <div class="modal-body">
+                <p id="modalBodyContent"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">بستن</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+@section Scripts{
+    <script>
+        //نمایش کالاها و انتخاب کیفیت
+        $(function () {
+            var ShowMarketplaceQuality = function (ProductQualityID) {
+                $("#MarketplaceQuality").slideUp(function () {
+                    $("#FoodQuality").css('display', 'none');
+                    $("#WeaponQuality").css('display', 'none');
+                    $("#TicketQuality").css('display', 'none');
+                    $("#HouseQuality").css('display', 'none');
+                    $(ProductQualityID).css('display', 'block');
+                    $("#MarketplaceQuality").slideDown();
+                });
+            };
+            var HideMarketplaceQuality = function () {
+                $("#MarketplaceQuality").slideUp(function () {
+                    $("#FoodQuality").css('display', 'none');
+                    $("#WeaponQuality").css('display', 'none');
+                    $("#TicketQuality").css('display', 'none');
+                    $("#HouseQuality").css('display', 'none');
+                });
+            };
+
+            $("#Product1").click(function () {
+                ShowMarketplaceQuality("#FoodQuality");
+            });
+            $("#Product2").click(function () {
+                ShowMarketplaceQuality("#WeaponQuality");
+            });
+            $("#Product3").click(function () {
+                ShowMarketplaceQuality("#TicketQuality");
+            });
+            $("#Product4").click(function () {
+                ShowMarketplaceQuality("#HouseQuality");
+            });
+
+            $("#Product5").click(function () {
+                HideMarketplaceQuality();
+            });
+            $("#Product6").click(function () {
+                HideMarketplaceQuality();
+            });
+            $("#Product7").click(function () {
+                HideMarketplaceQuality();
+            });
+            HideMarketplaceQuality();
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $('img[id^=Product]').on("click", function () {
+                var ProductId = parseInt($(this).attr('id').replace("Product", ""));
+                if (ProductId >= 5) {
+                    document.body.style.cursor = "wait";
+                    $("#MarketplaceMain div").css("cursor", "wait");
+                    $("#MarketplaceQualitySelector div div").css("cursor", "wait");
+                    $.ajax({
+                        //type: "POST",
+                        url: "@Url.Action("GetData", new { id = "XXX" })".replace("XXX", ProductId)
+                        //url:  "GetData/" + ProductId,
+                        //url: "../api/BestPricesApi/" + ProductId,
+                        //url: "../api/BestPricesApi/",
+                        //contentType: 'application/json',
+                        //data: JSON.stringify({id: 1 })
+                        //data: form.serialize()
+                    })
+                    .success(function (html) {
+                        $('#PartaialViewResult').replaceWith(html);
+                        document.body.style.cursor = "default";
+                        $("#MarketplaceMain div").css("cursor", "pointer");
+                        $("#MarketplaceQualitySelector div div").css("cursor", "pointer");
+                        //$("#modalBodyContent").html("اطلاعات با موفقیت خوانده شد.");
+                        //$("#myModal").modal('show');
+                    })
+                    .error(function () {
+                        $("#modalBodyContent").html("خواندن اطلاعات امکان پذیر نشد.");
+                        $("#myModal").modal('show');
+                    });
+                    return false;
+                }
+            });
+        });
+    </script>
+    <script>
+        //$('#myModal').on('hidden', function () {
+        //    $(this).removeData('modal');
+        //});
+    </script>
+}
+
+@section Styles{
+    <style>
+        #Marketplace {
+            width: 758px;
+            background: #e9f5fa;
+            border: 1px solid #c4e6f2;
+            border-radius: 5px;
+            /*-webkit-border-radius: 5px;*/
+            /*padding: 10px;*/
+            padding-right: 15px;
+        }
+
+        #MarketplaceMain {
+            width: 740px;
+            margin-right: 9px;
+            margin-top: 7px;
+            margin-bottom: 10px;
+        }
+
+        #Marketplace h4 {
+            color: #72b5cc;
+            float: right;
+            padding-right: 15px;
+        }
+
+        #Marketplace #MarketplaceQuality h4 {
+            padding-right: 30px;
+        }
+
+        #MarketplaceMain div {
+            background: #fff;
+            border: 1px solid #c4e7ed;
+            float: right;
+            height: 71px;
+            margin-right: -1px;
+            position: relative;
+            width: 73px;
+            cursor: pointer;
+        }
+
+            #MarketplaceMain div:first-child {
+                border-radius: 0 5px 5px 0;
+            }
+
+            #MarketplaceMain div:last-child {
+                border-radius: 5px 0 0 5px;
+            }
+
+        #MarketplaceQualitySelector {
+            width: 740px;
+            height: 94px;
+            clear: both;
+            display: block;
+            margin-top: 0px;
+            margin-right: auto;
+            margin-bottom: 10px;
+            margin-left: auto;
+            background-image: url("../../Files/Images/Images/selectors_bg.png");
+        }
+
+            #MarketplaceQualitySelector div div {
+                width: 89px;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+                border-bottom-left-radius: 5px;
+                box-shadow: #ffffff;
+                height: 67px;
+                text-align: center;
+                margin-top: 14px;
+                margin-right: 15px;
+                line-height: 67px;
+                float: right;
+                background-image: url("../../Files/Images/Images/selectors.png");
+                background-position: center top;
+            }
+
+                #MarketplaceQualitySelector div div img {
+                    width: 55px;
+                    height: 55px;
+                }
+
+            #MarketplaceQualitySelector div div {
+                cursor: pointer;
+            }
+    </style>
+}

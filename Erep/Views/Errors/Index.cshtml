@@ -1,0 +1,41 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    ViewBag.Title = "خطا";
+}
+
+
+<h1 class="text-danger">خطا</h1>
+<h2 class="text-warning">در زمان اجرای در خواست شما اشکالی روی داده است.</h2>
+
+<h3>@ViewBag.ErrorMessagePersian</h3>
+
+
+@*تست نمایش نام صفحه
+@VirtualPath
+and if you wanted to get only the filename:
+
+@Path.GetFileName(Server.MapPath(VirtualPath))
+and without the extension:
+
+@Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath))*@
+
+<br/>
+
+    @*نمایش اطلاعات بیشتر در مورد خطا
+        <div dir="ltr">
+        @if (Model != null && HttpContext.Current.IsDebuggingEnabled)
+        {
+            <div>
+                <p>
+                    <b>Exception:</b> @Model.Exception.Message<br />
+                    <b>Controller:</b> @Model.ControllerName<br />
+                    <b>Action:</b> @Model.ActionName
+                </p>
+                <div style="overflow:scroll">
+                    <pre>
+                    @Model.Exception.StackTrace
+                </pre>
+                </div>
+            </div>
+        }
+    </div>*@

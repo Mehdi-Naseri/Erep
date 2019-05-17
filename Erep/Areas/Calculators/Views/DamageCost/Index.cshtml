@@ -1,0 +1,209 @@
+﻿@{
+    ViewBag.Title = "هزینه دمیج";
+}
+
+<h2>هزینه یک میلیون دمیج</h2>
+
+<form>
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.Label("قدرت", new { @class = "control-label col-md-2" })
+            <div class="col-md-10" style="max-width: 200px;" dir="ltr">
+                @Html.TextBox("Strenght", 0, new { type = "text", min = "0", step = '1', @class = "form-control col-md-2" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("درجه", new { @class = "control-label  col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Rank", (IEnumerable<SelectListItem>)ViewBag.Ranks, new { @class = "form-control col-md-3", style = "direction:ltr" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("کیفیت غذا", new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-default active">
+                        <input type="radio" name="FoodQuality" id="OptionFood-1" value="1" autocomplete="off" checked />1
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="FoodQuality" id="OptionFood-2" value="2" autocomplete="off" />2
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="FoodQuality" id="OptionFood-3" value="3" autocomplete="off" />3
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="FoodQuality" id="OptionFood-4" value="4" autocomplete="off" />4
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="FoodQuality" id="OptionFood-5" value="5" autocomplete="off" />5
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="FoodQuality" id="OptionFood-6" value="6" autocomplete="off" />6
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="FoodQuality" id="OptionFood-7" value="7" autocomplete="off" />7
+                    </label>
+                </div>
+
+            </div>
+            @Html.Label("قیمت", new { @class = "control-label  col-md-1" })
+            <div class="col-md-5" style="max-width: 200px;" dir="ltr">
+                @Html.TextBox("FoodPrice", 0.05, new { type = "text", min = "0", value = "0.05", @class = "form-control col-md-2" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("کیفیت اصلحه", new { @class = "control-label  col-md-2" })
+            <div class="col-md-4">
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-default active">
+                        <input type="radio" name="WeaponType" id="OptionWeapon-0" value="0" autocomplete="off" checked />هیچکدام
+                    </label>
+                    <label class="btn btn-default ">
+                        <input type="radio" name="WeaponType" id="OptionWeapon-1" value="1" autocomplete="off" />1
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="WeaponType" id="OptionWeapon-2" value="2" autocomplete="off" />2
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="WeaponType" id="OptionWeapon-3" value="3" autocomplete="off" />3
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="WeaponType" id="OptionWeapon-4" value="4" autocomplete="off" />4
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="WeaponType" id="OptionWeapon-5" value="5" autocomplete="off" />5
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="WeaponType" id="OptionWeapon-6" value="6" autocomplete="off" />6
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="WeaponType" id="OptionWeapon-7" value="7" autocomplete="off" />7
+                    </label>
+                </div>
+            </div>
+
+            @Html.Label("قیمت", new { @class = "control-label  col-md-1" })
+            <div class="col-md-5" style="max-width: 200px;" dir="ltr">
+                @Html.TextBox("WeaponPrice", 0, new { type = "text", min = "0", @class = "form-control col-md-2" })
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4 col-sm-offset-2">
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">
+                <h3>هزینه یک میلیون دمیج</h3>
+            </div>
+            <div class="panel-body">
+                <dl class="dl-horizontal alert-success">
+                    <dt style="width:120px">هزینه</dt>
+                    <dd style="margin-right:150px" >
+                        <span id="1MilDamageCost">0</span>
+                        <img src="~/Files/Images/Images/salary_icon.png" />
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/Meh/Kendoui/kendo.web.min.js"></script>
+    <script>
+        $(function () {
+            //محاسبه دمیج
+            var CalculateDamage = function (Strenght, RankValue, FirePower) {
+                var Damage = 10 * (1 + (Strenght / 400)) * (1 + (RankValue / 5)) * (1 + (FirePower / 100));
+                return parseInt(Damage);
+            };
+            var CalculateCost = function (FoodType, FoodPrice, WeaponType, WeaponPrice) {
+                //هزینه فود
+                var EnergyRecovery;
+                if (FoodType == 7) {
+                    EnergyRecovery = 20;
+                }
+                else {
+                    EnergyRecovery = FoodType * 2;
+                }
+
+                var FoodCost = parseFloat((10 / EnergyRecovery) * FoodPrice);
+                //هزینه اصلحه
+                var WeaponCost;
+                if (WeaponType != 0) {
+                    var WeaponUsage;
+                    if (WeaponType == 7) {
+                        WeaponUsage = 10;
+                    }
+                    else {
+                        WeaponUsage = WeaponType;
+                    }
+                    WeaponCost = parseFloat(WeaponPrice / WeaponUsage);
+                }
+                else {
+                    WeaponCost = 0;
+                }
+                return parseFloat(FoodCost + WeaponCost);
+            };
+            //نمایش نتیجه
+            var ShowCost = function () {
+                //محاسبه دمیج
+                var Strenght = $('#Strenght').val();
+                var Rank = parseInt(parseInt($('#Rank').val()) + 1);
+                var WeaponType = $('input[name="WeaponType"]:checked').val();
+                var FirePower;
+                if (WeaponType == 7) {
+                    FirePower = 200;
+                }
+                else {
+                    FirePower = WeaponType * 20;
+                }
+                var Damage = CalculateDamage(Strenght, Rank, FirePower);
+
+                var FoodType = $('input[name="FoodQuality"]:checked').val();
+                var FoodPrice = $('#FoodPrice').val();
+                var WeaponPrice = $('#WeaponPrice').val();
+
+                var Cost = CalculateCost(FoodType, FoodPrice, WeaponType, WeaponPrice);
+
+                var Result = parseFloat(Cost * (1000000 / Damage)).toFixed(2);
+
+                $('#1MilDamageCost').text(Result);
+            };
+
+            //نمایش دمیج پس از تغییر ورودی ها
+            $('input').change(function () {
+                ShowCost();
+            });
+            $('select').change(function () {
+                ShowCost();
+            });
+
+            //نمایش نتیجه
+            ShowCost();
+        });
+    </script>
+    @*تبدیل تکست باکس به عددی*@
+    <script src="~/Scripts/Meh/bootstrap.touchspin.js"></script>
+    <script>
+        $(function () {
+            $("#Strenght").TouchSpin({
+                max: 1000000
+            });
+            $("#FoodPrice , #WeaponPrice").TouchSpin({
+                //step: 0.01,
+                max: 1000000,
+                //decimals: 2,
+                step: 0.001,
+                decimals: 3
+            });
+            //$("input[type=number]").TouchSpin();
+        });
+    </script>
+}

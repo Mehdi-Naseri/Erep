@@ -1,0 +1,48 @@
+﻿@*@model Microsoft.AspNet.Identity.EntityFramework.IdentityUser*@
+@model Identity.Models.Models.ApplicationUser
+@{
+    ViewBag.Title = "Delete User";
+}
+
+<div class="modal-header alert-danger">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        <span class="glyphicon glyphicon-remove"></span></button>
+    <h3 class="modal-title">حذف کاربر</h3>
+</div>
+
+
+<div class="modal-body">
+    <div class="form-horizontal">
+
+        <div class="form-group Meh-required">
+            @Html.Label("UserName", "User Name", new {@class = "control-label col-sm-3"})
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.UserName, new {@class = "form-control", dir = "ltr", @disabled = "disabled"})
+            </div>
+        </div>
+        <div class="form-group Meh-required">
+            @Html.LabelFor(model => model.Email, new {@class = "control-label col-sm-3"})
+            <div class="col-sm-9">
+                @Html.TextBoxFor(model => model.Email, new {@class = "form-control", dir = "ltr", @disabled = "disabled"})
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+                <h3>
+                    <span class="label label-danger">
+                        آیا مایلید این مورد حذف گردد؟
+                    </span>
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-footer">
+        <input class="btn btn-danger" type="submit" value="بله"/>
+        <button class="btn btn-primary" data-dismiss="modal">خیر</button>
+    </div>
+}

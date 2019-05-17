@@ -1,0 +1,848 @@
+﻿@{
+    ViewBag.Title = "مقایسه سود همه کارخانه ها";
+}
+
+<h2>مقایسه سود همه کارخانه ها</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="form-horizontal">
+        <div class="form-group">
+            <fieldset>
+                <legend class="text-success">مالیات</legend>
+                @Html.Label("WorkingTax", "مالیات کار", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("WorkingTax", 1.80, new { @class = "form-control" })
+                </div>
+            </fieldset>
+        </div>
+        <div class="form-group">
+            <fieldset>
+                <legend class="text-success">دستمزد</legend>
+                @Html.Label("WorkerSalary", "دستمزد کارگر", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("WorkerSalary", 40, new { @class = "form-control" })
+                </div>
+            </fieldset>
+        </div>
+        <div class="form-group">
+            <fieldset>
+                <legend class="text-success">بونس</legend>
+                @Html.Label("FoodBounes", "درصد بونس غذا", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("FoodBounes", 80, new { @class = "form-control M-Bounes" })
+                </div>
+                @Html.Label("WeaponBounes", "درصد بونس اسلحه", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("WeaponBounes", 60, new { @class = "form-control M-Bounes" })
+                </div>
+                @Html.Label("HouseBounes", "درصد بونس خانه", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("HouseBounes", 20, new { @class = "form-control M-Bounes" })
+                </div>
+            </fieldset>
+        </div>
+        <div class="form-group">
+            <fieldset>
+                <legend class="text-success">قیمت مواد اولیه</legend>
+                @Html.Label("FoodRawPrice", "مواد اولیه غذا", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("FoodRawPrice", 0.03, new { @class = "form-control" })
+                </div>
+                @Html.Label("WeaponRawPrice", "مواد اولیه اسلحه", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("WeaponRawPrice", 0.03, new { @class = "form-control" })
+                </div>
+                @Html.Label("HouseRawPrice", "مواد اولیه خانه", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("HouseRawPrice", 0.12, new { @class = "form-control" })
+                </div>
+            </fieldset>
+        </div>
+        <div class="form-group">
+            <fieldset>
+                <legend class="text-success">قیمت غذا</legend>
+                <div class="row">
+                    @Html.Label("FoodPriceQ1", "غذا کیفیت 1", new { @class = "control-label col-md-2" })
+                    <div class="col-md-2 M-TextBoxHolder">
+                        @Html.TextBox("FoodPriceQ1", 0.05, new { @class = "form-control" })
+                    </div>
+                    @Html.Label("FoodPriceQ2", "غذا کیفیت 2", new { @class = "control-label col-md-2" })
+                    <div class="col-md-2 M-TextBoxHolder">
+                        @Html.TextBox("FoodPriceQ2", 0.10, new { @class = "form-control" })
+                    </div>
+                    @Html.Label("FoodPriceQ3", "غذا کیفیت 3", new { @class = "control-label col-md-2" })
+                    <div class="col-md-2 M-TextBoxHolder">
+                        @Html.TextBox("FoodPriceQ3", 0.15, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    @Html.Label("FoodPriceQ4", "غذا کیفیت 4", new { @class = "control-label col-md-2" })
+                    <div class="col-md-2 M-TextBoxHolder">
+                        @Html.TextBox("FoodPriceQ4", 0.20, new { @class = "form-control" })
+                    </div>
+                    @Html.Label("FoodPriceQ5", "غذا کیفیت 5", new { @class = "control-label col-md-2" })
+                    <div class="col-md-2 M-TextBoxHolder">
+                        @Html.TextBox("FoodPriceQ5", 0.30, new { @class = "form-control" })
+                    </div>
+                    @Html.Label("FoodPriceQ6", "غذا کیفیت 6", new { @class = "control-label col-md-2" })
+                    <div class="col-md-2 M-TextBoxHolder">
+                        @Html.TextBox("FoodPriceQ6", 0.40, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    @Html.Label("FoodPriceQ7", "غذا کیفیت 7", new { @class = "control-label col-md-2" })
+                    <div class="col-md-2 M-TextBoxHolder">
+                        @Html.TextBox("FoodPriceQ7", 0.80, new { @class = "form-control" })
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="form-group">
+            <fieldset>
+                <legend class="text-success">قیمت اسلحه</legend>
+                <div class="row">
+                    @Html.Label("WeaponPriceQ1", "اسلحه کیفیت 1", new { @class = "control-label col-md-2" })
+                    <div class="col-md-2 M-TextBoxHolder">
+                        @Html.TextBox("WeaponPriceQ1", 0.04, new { @class = "form-control" })
+                    </div>
+                    @Html.Label("WeaponPriceQ2", "اسلحه کیفیت 2", new { @class = "control-label col-md-2" })
+                    <div class="col-md-2 M-TextBoxHolder">
+                        @Html.TextBox("WeaponPriceQ2", 0.13, new { @class = "form-control" })
+                    </div>
+                    @Html.Label("WeaponPriceQ3", "اسلحه کیفیت 3", new { @class = "control-label col-md-2" })
+                    <div class="col-md-2 M-TextBoxHolder">
+                        @Html.TextBox("WeaponPriceQ3", 0.25, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    @Html.Label("WeaponPriceQ4", "اسلحه کیفیت 4", new { @class = "control-label col-md-2" })
+                    <div class="col-md-2 M-TextBoxHolder">
+                        @Html.TextBox("WeaponPriceQ4", 0.47, new { @class = "form-control" })
+                    </div>
+                    @Html.Label("WeaponPriceQ5", "اسلحه کیفیت 5", new { @class = "control-label col-md-2" })
+                    <div class="col-md-2 M-TextBoxHolder">
+                        @Html.TextBox("WeaponPriceQ5", 1.22, new { @class = "form-control" })
+                    </div>
+                    @Html.Label("WeaponPriceQ6", "اسلحه کیفیت 6", new { @class = "control-label col-md-2" })
+                    <div class="col-md-2 M-TextBoxHolder">
+                        @Html.TextBox("WeaponPriceQ6", 3.12, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    @Html.Label("WeaponPriceQ7", "اسلحه کیفیت 7", new { @class = "control-label col-md-2" })
+                    <div class="col-md-2 M-TextBoxHolder">
+                        @Html.TextBox("WeaponPriceQ7", 6.00, new { @class = "form-control" })
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="form-group">
+            <fieldset>
+                <legend class="text-success">قیمت خانه</legend>
+                <div class="row">
+                    @Html.Label("HousePriceQ1", "خانه کیفیت 1", new { @class = "control-label col-md-2" })
+                    <div class="col-md-2 M-TextBoxHolder">
+                        @Html.TextBox("HousePriceQ1", 290, new { @class = "form-control" })
+                    </div>
+                    @Html.Label("HousePriceQ2", "خانه کیفیت 2", new { @class = "control-label col-md-2" })
+                    <div class="col-md-2 M-TextBoxHolder">
+                        @Html.TextBox("HousePriceQ2", 562, new { @class = "form-control" })
+                    </div>
+                    @Html.Label("HousePriceQ3", "خانه کیفیت 3", new { @class = "control-label col-md-2" })
+                    <div class="col-md-2 M-TextBoxHolder">
+                        @Html.TextBox("HousePriceQ3", 1074, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    @Html.Label("HousePriceQ4", "خانه کیفیت 4", new { @class = "control-label col-md-2" })
+                    <div class="col-md-2 M-TextBoxHolder">
+                        @Html.TextBox("HousePriceQ4", 2274, new { @class = "form-control" })
+                    </div>
+                    @Html.Label("HousePriceQ5", "خانه کیفیت 5", new { @class = "control-label col-md-2" })
+                    <div class="col-md-2 M-TextBoxHolder">
+                        @Html.TextBox("HousePriceQ5", 3430, new { @class = "form-control" })
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+}
+<hr />
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <div class="panel-title text-center">سود کارخانه ها بدون کارگر</div>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th>کارخانه</th>
+                    <th>سود روزانه</th>
+                    <th>سود ماهانه</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="alert-info">
+                    <td>مواد اولیه غذا 1</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>مواد اولیه غذا 2</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>مواد اولیه غذا 3</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>مواد اولیه غذا 4</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>مواد اولیه غذا 5</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="alert-info">
+                    <td>مواد اولیه اسلحه 1</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>مواد اولیه اسلحه 2</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>مواد اولیه اسلحه 3</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>مواد اولیه اسلحه 4</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>مواد اولیه اسلحه 5</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                @*<tr class="alert-info">
+                        <td>کارخانه مواد اولیه خانه 1</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>کارخانه مواد اولیه خانه 2</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>کارخانه مواد اولیه خانه 3</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>کارخانه مواد اولیه خانه 4</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>کارخانه مواد اولیه خانه 5</td>
+                        <td></td>
+                        <td></td>
+                    </tr>*@
+                <tr class="alert-info">
+                    <td>غذا کیفیت 1</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>غذا کیفیت 2</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>غذا کیفیت 3</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>غذا کیفیت 4</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>غذا کیفیت 5</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>غذا کیفیت 6</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>غذا کیفیت 7</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="alert-info">
+                    <td>اسلحه کیفیت 1</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>اسلحه کیفیت 2</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>اسلحه کیفیت 3</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>اسلحه کیفیت 4</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>اسلحه کیفیت 5</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>اسلحه کیفیت 6</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>اسلحه کیفیت 7</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                @*<tr class="alert-info">
+                        <td>کارخانه خانه کیفیت 1</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>کارخانه خانه کیفیت 2</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>کارخانه خانه کیفیت 3</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>کارخانه خانه کیفیت 4</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>کارخانه خانه کیفیت 5</td>
+                        <td></td>
+                        <td></td>
+                    </tr>*@
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <div class="panel-title text-center">سود کارخانه ها با یک کارگر</div>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th>کارخانه</th>
+                    <th>سود روزانه</th>
+                    <th>سود ماهانه</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="alert-info">
+                    <td>مواد اولیه غذا 1</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>مواد اولیه غذا 2</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>مواد اولیه غذا 3</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>مواد اولیه غذا 4</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>مواد اولیه غذا 5</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="alert-info">
+                    <td>مواد اولیه اسلحه 1</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>مواد اولیه اسلحه 2</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>مواد اولیه اسلحه 3</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>مواد اولیه اسلحه 4</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>مواد اولیه اسلحه 5</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="alert-info">
+                    <td>مواد اولیه خانه 1</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>مواد اولیه خانه 2</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>مواد اولیه خانه 3</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>مواد اولیه خانه 4</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>مواد اولیه خانه 5</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="alert-info">
+                    <td>غذا کیفیت 1</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>غذا کیفیت 2</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>غذا کیفیت 3</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>غذا کیفیت 4</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>غذا کیفیت 5</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>غذا کیفیت 6</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>غذا کیفیت 7</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="alert-info">
+                    <td>اسلحه کیفیت 1</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>اسلحه کیفیت 2</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>اسلحه کیفیت 3</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>اسلحه کیفیت 4</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>اسلحه کیفیت 5</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>اسلحه کیفیت 6</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>اسلحه کیفیت 7</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="alert-info">
+                    <td>خانه کیفیت 1</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>خانه کیفیت 2</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>خانه کیفیت 3</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>خانه کیفیت 4</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>خانه کیفیت 5</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+@*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*@
+@section Styles{
+    <style>
+        .M-TextBoxHolder {
+            max-width: 200px;
+            /*max-width: 16%;*/
+            direction: ltr;
+        }
+
+        td {
+            direction: ltr;
+        }
+    </style>
+}
+@*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*@
+@section Scripts{
+    @*تبدیل تکست باکس به عددی*@
+    <script src="~/Scripts/Meh/bootstrap.touchspin.js"></script>
+    <script>
+        $(function () {
+            $("th").addClass("text-center");
+            $("td").addClass("text-center");
+            $("input[type='text']:not(.M-Bounes)").TouchSpin({
+                step: 0.01,
+                max: 1000000,
+                decimals: 2,
+                initval: 0
+                //,
+                //postfix : "$"
+            });
+            $(".M-Bounes").TouchSpin({
+                step: 10,
+                max: 100,
+                decimals: 0,
+                initval: 0
+            });
+        });
+    </script>
+    <script>
+        $(function () {
+            var ShowResultWithoutWorker = function () {
+                //خواندن ورودیها
+                var WorkingTax = $("#WorkingTax").val();
+                var FoodBounes = $("#FoodBounes").val();
+                var WeaponBounes = $("#WeaponBounes").val();
+                var FoodRawPrice = $("#FoodRawPrice").val();
+                var WeaponRawPrice = $("#WeaponRawPrice").val();
+                var FoodPriceQ1 = $("#FoodPriceQ1").val();
+                var FoodPriceQ2 = $("#FoodPriceQ2").val();
+                var FoodPriceQ3 = $("#FoodPriceQ3").val();
+                var FoodPriceQ4 = $("#FoodPriceQ4").val();
+                var FoodPriceQ5 = $("#FoodPriceQ5").val();
+                var FoodPriceQ6 = $("#FoodPriceQ6").val();
+                var FoodPriceQ7 = $("#FoodPriceQ7").val();
+                var WeaponPriceQ1 = $("#WeaponPriceQ1").val();
+                var WeaponPriceQ2 = $("#WeaponPriceQ2").val();
+                var WeaponPriceQ3 = $("#WeaponPriceQ3").val();
+                var WeaponPriceQ4 = $("#WeaponPriceQ4").val();
+                var WeaponPriceQ5 = $("#WeaponPriceQ5").val();
+                var WeaponPriceQ6 = $("#WeaponPriceQ6").val();
+                var WeaponPriceQ7 = $("#WeaponPriceQ7").val();
+
+                //محاسبه سود کارخانه ها بدون کارگر
+                var TenEnergPrice = Math.min((FoodPriceQ1 * 5),
+                      ((FoodPriceQ2 / 2) * 5),
+                      ((FoodPriceQ3 / 3) * 5),
+                      ((FoodPriceQ4 / 4) * 5),
+                      ((FoodPriceQ5 / 5) * 5),
+                      ((FoodPriceQ6 / 6) * 5),
+                      ((FoodPriceQ7 / 10) * 5));
+
+                var WorkingCost = (parseFloat(TenEnergPrice) + parseFloat(WorkingTax));
+                var FoodRaw1 = ((1 + (FoodBounes / 100)) * 35 * FoodRawPrice) - WorkingCost;
+                var FoodRaw2 = ((1 + (FoodBounes / 100)) * 70 * FoodRawPrice) - WorkingCost;
+                var FoodRaw3 = ((1 + (FoodBounes / 100)) * 125 * FoodRawPrice) - WorkingCost;
+                var FoodRaw4 = ((1 + (FoodBounes / 100)) * 175 * FoodRawPrice) - WorkingCost;
+                var FoodRaw5 = ((1 + (FoodBounes / 100)) * 250 * FoodRawPrice) - WorkingCost;
+                var WeaponRaw1 = ((1 + (WeaponBounes / 100)) * 35 * WeaponRawPrice) - WorkingCost;
+                var WeaponRaw2 = ((1 + (WeaponBounes / 100)) * 70 * WeaponRawPrice) - WorkingCost;
+                var WeaponRaw3 = ((1 + (WeaponBounes / 100)) * 125 * WeaponRawPrice) - WorkingCost;
+                var WeaponRaw4 = ((1 + (WeaponBounes / 100)) * 175 * WeaponRawPrice) - WorkingCost;
+                var WeaponRaw5 = ((1 + (WeaponBounes / 100)) * 250 * WeaponRawPrice) - WorkingCost;
+                var FoodQ1 = ((1 + (FoodBounes / 100)) * ((100 * FoodPriceQ1) - (100 * FoodRawPrice))) - WorkingCost;
+                var FoodQ2 = ((1 + (FoodBounes / 100)) * ((100 * FoodPriceQ2) - (200 * FoodRawPrice))) - WorkingCost;
+                var FoodQ3 = ((1 + (FoodBounes / 100)) * ((100 * FoodPriceQ3) - (300 * FoodRawPrice))) - WorkingCost;
+                var FoodQ4 = ((1 + (FoodBounes / 100)) * ((100 * FoodPriceQ4) - (400 * FoodRawPrice))) - WorkingCost;
+                var FoodQ5 = ((1 + (FoodBounes / 100)) * ((100 * FoodPriceQ5) - (500 * FoodRawPrice))) - WorkingCost;
+                var FoodQ6 = ((1 + (FoodBounes / 100)) * ((100 * FoodPriceQ6) - (600 * FoodRawPrice))) - WorkingCost;
+                var FoodQ7 = ((1 + (FoodBounes / 100)) * ((100 * FoodPriceQ7) - (2000 * FoodRawPrice))) - WorkingCost;
+                var WeaponQ1 = ((1 + (WeaponBounes / 100)) * ((10 * WeaponPriceQ1) - (100 * WeaponRawPrice))) - WorkingCost;
+                var WeaponQ2 = ((1 + (WeaponBounes / 100)) * ((10 * WeaponPriceQ2) - (200 * WeaponRawPrice))) - WorkingCost;
+                var WeaponQ3 = ((1 + (WeaponBounes / 100)) * ((10 * WeaponPriceQ3) - (300 * WeaponRawPrice))) - WorkingCost;
+                var WeaponQ4 = ((1 + (WeaponBounes / 100)) * ((10 * WeaponPriceQ4) - (400 * WeaponRawPrice))) - WorkingCost;
+                var WeaponQ5 = ((1 + (WeaponBounes / 100)) * ((10 * WeaponPriceQ5) - (500 * WeaponRawPrice))) - WorkingCost;
+                var WeaponQ6 = ((1 + (WeaponBounes / 100)) * ((10 * WeaponPriceQ6) - (600 * WeaponRawPrice))) - WorkingCost;
+                var WeaponQ7 = ((1 + (WeaponBounes / 100)) * ((10 * WeaponPriceQ7) - (2000 * WeaponRawPrice))) - WorkingCost;
+                //نمایش نتایج سود کارخانه ها در جدول
+                $("tbody:eq(0) tr:eq(0) td:eq(1)").text(FoodRaw1.toFixed(3));
+                $("tbody:eq(0) tr:eq(1) td:eq(1)").text(FoodRaw2.toFixed(3));
+                $("tbody:eq(0) tr:eq(2) td:eq(1)").text(FoodRaw3.toFixed(3));
+                $("tbody:eq(0) tr:eq(3) td:eq(1)").text(FoodRaw4.toFixed(3));
+                $("tbody:eq(0) tr:eq(4) td:eq(1)").text(FoodRaw5.toFixed(3));
+                $("tbody:eq(0) tr:eq(5) td:eq(1)").text(WeaponRaw1.toFixed(3));
+                $("tbody:eq(0) tr:eq(6) td:eq(1)").text(WeaponRaw2.toFixed(3));
+                $("tbody:eq(0) tr:eq(7) td:eq(1)").text(WeaponRaw3.toFixed(3));
+                $("tbody:eq(0) tr:eq(8) td:eq(1)").text(WeaponRaw4.toFixed(3));
+                $("tbody:eq(0) tr:eq(9) td:eq(1)").text(WeaponRaw5.toFixed(3));
+                $("tbody:eq(0) tr:eq(10) td:eq(1)").text(FoodQ1.toFixed(3));
+                $("tbody:eq(0) tr:eq(11) td:eq(1)").text(FoodQ2.toFixed(3));
+                $("tbody:eq(0) tr:eq(12) td:eq(1)").text(FoodQ3.toFixed(3));
+                $("tbody:eq(0) tr:eq(13) td:eq(1)").text(FoodQ4.toFixed(3));
+                $("tbody:eq(0) tr:eq(14) td:eq(1)").text(FoodQ5.toFixed(3));
+                $("tbody:eq(0) tr:eq(15) td:eq(1)").text(FoodQ6.toFixed(3));
+                $("tbody:eq(0) tr:eq(16) td:eq(1)").text(FoodQ7.toFixed(3));
+                $("tbody:eq(0) tr:eq(17) td:eq(1)").text(WeaponQ1.toFixed(3));
+                $("tbody:eq(0) tr:eq(18) td:eq(1)").text(WeaponQ2.toFixed(3));
+                $("tbody:eq(0) tr:eq(19) td:eq(1)").text(WeaponQ3.toFixed(3));
+                $("tbody:eq(0) tr:eq(20) td:eq(1)").text(WeaponQ4.toFixed(3));
+                $("tbody:eq(0) tr:eq(21) td:eq(1)").text(WeaponQ5.toFixed(3));
+                $("tbody:eq(0) tr:eq(22) td:eq(1)").text(WeaponQ6.toFixed(3));
+                $("tbody:eq(0) tr:eq(23) td:eq(1)").text(WeaponQ7.toFixed(3));
+                $("tbody:eq(0) tr:eq(0) td:eq(2)").text((FoodRaw1 * 30).toFixed(3));
+                $("tbody:eq(0) tr:eq(1) td:eq(2)").text((FoodRaw2 * 30).toFixed(3));
+                $("tbody:eq(0) tr:eq(2) td:eq(2)").text((FoodRaw3 * 30).toFixed(3));
+                $("tbody:eq(0) tr:eq(3) td:eq(2)").text((FoodRaw4 * 30).toFixed(3));
+                $("tbody:eq(0) tr:eq(4) td:eq(2)").text((FoodRaw5 * 30).toFixed(3));
+                $("tbody:eq(0) tr:eq(5) td:eq(2)").text((WeaponRaw1 * 30).toFixed(3));
+                $("tbody:eq(0) tr:eq(6) td:eq(2)").text((WeaponRaw2 * 30).toFixed(3));
+                $("tbody:eq(0) tr:eq(7) td:eq(2)").text((WeaponRaw3 * 30).toFixed(3));
+                $("tbody:eq(0) tr:eq(8) td:eq(2)").text((WeaponRaw4 * 30).toFixed(3));
+                $("tbody:eq(0) tr:eq(9) td:eq(2)").text((WeaponRaw5 * 30).toFixed(3));
+                $("tbody:eq(0) tr:eq(10) td:eq(2)").text((FoodQ1 * 30).toFixed(3));
+                $("tbody:eq(0) tr:eq(11) td:eq(2)").text((FoodQ2 * 30).toFixed(3));
+                $("tbody:eq(0) tr:eq(12) td:eq(2)").text((FoodQ3 * 30).toFixed(3));
+                $("tbody:eq(0) tr:eq(13) td:eq(2)").text((FoodQ4 * 30).toFixed(3));
+                $("tbody:eq(0) tr:eq(14) td:eq(2)").text((FoodQ5 * 30).toFixed(3));
+                $("tbody:eq(0) tr:eq(15) td:eq(2)").text((FoodQ6 * 30).toFixed(3));
+                $("tbody:eq(0) tr:eq(16) td:eq(2)").text((FoodQ7 * 30).toFixed(3));
+                $("tbody:eq(0) tr:eq(17) td:eq(2)").text((WeaponQ1 * 30).toFixed(3));
+                $("tbody:eq(0) tr:eq(18) td:eq(2)").text((WeaponQ2 * 30).toFixed(3));
+                $("tbody:eq(0) tr:eq(19) td:eq(2)").text((WeaponQ3 * 30).toFixed(3));
+                $("tbody:eq(0) tr:eq(20) td:eq(2)").text((WeaponQ4 * 30).toFixed(3));
+                $("tbody:eq(0) tr:eq(21) td:eq(2)").text((WeaponQ5 * 30).toFixed(3));
+                $("tbody:eq(0) tr:eq(22) td:eq(2)").text((WeaponQ6 * 30).toFixed(3));
+                $("tbody:eq(0) tr:eq(23) td:eq(2)").text((WeaponQ7 * 30).toFixed(3));
+            };
+            var ShowResultWithOneWorker = function () {
+                var WorkingTax = $("#WorkingTax").val();
+                var WorkerSalary = $("#WorkerSalary").val();
+                var FoodBounes = $("#FoodBounes").val();
+                var WeaponBounes = $("#WeaponBounes").val();
+                var HouseBounes = $("#HouseBounes").val();
+                var FoodRawPrice = $("#FoodRawPrice").val();
+                var WeaponRawPrice = $("#WeaponRawPrice").val();
+                var HouseRawPrice = $("#HouseRawPrice").val();
+                var FoodPriceQ1 = $("#FoodPriceQ1").val();
+                var FoodPriceQ2 = $("#FoodPriceQ2").val();
+                var FoodPriceQ3 = $("#FoodPriceQ3").val();
+                var FoodPriceQ4 = $("#FoodPriceQ4").val();
+                var FoodPriceQ5 = $("#FoodPriceQ5").val();
+                var FoodPriceQ6 = $("#FoodPriceQ6").val();
+                var FoodPriceQ7 = $("#FoodPriceQ7").val();
+                var WeaponPriceQ1 = $("#WeaponPriceQ1").val();
+                var WeaponPriceQ2 = $("#WeaponPriceQ2").val();
+                var WeaponPriceQ3 = $("#WeaponPriceQ3").val();
+                var WeaponPriceQ4 = $("#WeaponPriceQ4").val();
+                var WeaponPriceQ5 = $("#WeaponPriceQ5").val();
+                var WeaponPriceQ6 = $("#WeaponPriceQ6").val();
+                var WeaponPriceQ7 = $("#WeaponPriceQ7").val();
+                var HousePriceQ1 = $("#HousePriceQ1").val();
+                var HousePriceQ2 = $("#HousePriceQ2").val();
+                var HousePriceQ3 = $("#HousePriceQ3").val();
+                var HousePriceQ4 = $("#HousePriceQ4").val();
+                var HousePriceQ5 = $("#HousePriceQ5").val();
+
+                //محاسبه سود کارخانه ها با یک کارگر
+                var FoodRaw1 = ((1 + (FoodBounes / 100)) * 35 * FoodRawPrice) - WorkerSalary;
+                var FoodRaw2 = ((1 + (FoodBounes / 100)) * 70 * FoodRawPrice) - WorkerSalary;
+                var FoodRaw3 = ((1 + (FoodBounes / 100)) * 125 * FoodRawPrice) - WorkerSalary;
+                var FoodRaw4 = ((1 + (FoodBounes / 100)) * 175 * FoodRawPrice) - WorkerSalary;
+                var FoodRaw5 = ((1 + (FoodBounes / 100)) * 250 * FoodRawPrice) - WorkerSalary;
+                var WeaponRaw1 = ((1 + (WeaponBounes / 100)) * 35 * WeaponRawPrice) - WorkerSalary;
+                var WeaponRaw2 = ((1 + (WeaponBounes / 100)) * 70 * WeaponRawPrice) - WorkerSalary;
+                var WeaponRaw3 = ((1 + (WeaponBounes / 100)) * 125 * WeaponRawPrice) - WorkerSalary;
+                var WeaponRaw4 = ((1 + (WeaponBounes / 100)) * 175 * WeaponRawPrice) - WorkerSalary;
+                var WeaponRaw5 = ((1 + (WeaponBounes / 100)) * 250 * WeaponRawPrice) - WorkerSalary;
+                var HouseRaw1 = ((1 + (HouseBounes / 100)) * 35 * HouseRawPrice) - WorkerSalary;
+                var HouseRaw2 = ((1 + (HouseBounes / 100)) * 70 * HouseRawPrice) - WorkerSalary;
+                var HouseRaw3 = ((1 + (HouseBounes / 100)) * 125 * HouseRawPrice) - WorkerSalary;
+                var HouseRaw4 = ((1 + (HouseBounes / 100)) * 175 * HouseRawPrice) - WorkerSalary;
+                var HouseRaw5 = ((1 + (HouseBounes / 100)) * 250 * HouseRawPrice) - WorkerSalary;
+
+                var FoodQ1 = ((1 + (FoodBounes / 100)) * ((100 * FoodPriceQ1) - (100 * FoodRawPrice))) - WorkerSalary;
+                var FoodQ2 = ((1 + (FoodBounes / 100)) * ((100 * FoodPriceQ2) - (200 * FoodRawPrice))) - WorkerSalary;
+                var FoodQ3 = ((1 + (FoodBounes / 100)) * ((100 * FoodPriceQ3) - (300 * FoodRawPrice))) - WorkerSalary;
+                var FoodQ4 = ((1 + (FoodBounes / 100)) * ((100 * FoodPriceQ4) - (400 * FoodRawPrice))) - WorkerSalary;
+                var FoodQ5 = ((1 + (FoodBounes / 100)) * ((100 * FoodPriceQ5) - (500 * FoodRawPrice))) - WorkerSalary;
+                var FoodQ6 = ((1 + (FoodBounes / 100)) * ((100 * FoodPriceQ6) - (600 * FoodRawPrice))) - WorkerSalary;
+                var FoodQ7 = ((1 + (FoodBounes / 100)) * ((100 * FoodPriceQ7) - (2000 * FoodRawPrice))) - WorkerSalary;
+                var WeaponQ1 = ((1 + (WeaponBounes / 100)) * ((10 * WeaponPriceQ1) - (100 * WeaponRawPrice))) - WorkerSalary;
+                var WeaponQ2 = ((1 + (WeaponBounes / 100)) * ((10 * WeaponPriceQ2) - (200 * WeaponRawPrice))) - WorkerSalary;
+                var WeaponQ3 = ((1 + (WeaponBounes / 100)) * ((10 * WeaponPriceQ3) - (300 * WeaponRawPrice))) - WorkerSalary;
+                var WeaponQ4 = ((1 + (WeaponBounes / 100)) * ((10 * WeaponPriceQ4) - (400 * WeaponRawPrice))) - WorkerSalary;
+                var WeaponQ5 = ((1 + (WeaponBounes / 100)) * ((10 * WeaponPriceQ5) - (500 * WeaponRawPrice))) - WorkerSalary;
+                var WeaponQ6 = ((1 + (WeaponBounes / 100)) * ((10 * WeaponPriceQ6) - (600 * WeaponRawPrice))) - WorkerSalary;
+                var WeaponQ7 = ((1 + (WeaponBounes / 100)) * ((10 * WeaponPriceQ7) - (2000 * WeaponRawPrice))) - WorkerSalary;
+                var HouseQ1 = ((1 + (HouseBounes / 100)) * (1 * HousePriceQ1)) - (1000 * HouseRawPrice) - (5 * WorkerSalary);
+                var HouseQ2 = ((1 + (HouseBounes / 100)) * (1 * HousePriceQ2)) - (2000 * HouseRawPrice) - (10 * WorkerSalary);
+                var HouseQ3 = ((1 + (HouseBounes / 100)) * (1 * HousePriceQ3)) - (4000 * HouseRawPrice) - (20 * WorkerSalary);
+                var HouseQ4 = ((1 + (HouseBounes / 100)) * (1 * HousePriceQ4)) - (8000 * HouseRawPrice) - (40 * WorkerSalary);
+                var HouseQ5 = ((1 + (HouseBounes / 100)) * (1 * HousePriceQ5)) - (12000 * HouseRawPrice) - (60 * WorkerSalary);
+                //نمایش نتایج سود کارخانه ها در جدول
+                $("tbody:eq(1) tr:eq(0) td:eq(1)").text(FoodRaw1.toFixed(3));
+                $("tbody:eq(1) tr:eq(1) td:eq(1)").text(FoodRaw2.toFixed(3));
+                $("tbody:eq(1) tr:eq(2) td:eq(1)").text(FoodRaw3.toFixed(3));
+                $("tbody:eq(1) tr:eq(3) td:eq(1)").text(FoodRaw4.toFixed(3));
+                $("tbody:eq(1) tr:eq(4) td:eq(1)").text(FoodRaw5.toFixed(3));
+                $("tbody:eq(1) tr:eq(5) td:eq(1)").text(WeaponRaw1.toFixed(3));
+                $("tbody:eq(1) tr:eq(6) td:eq(1)").text(WeaponRaw2.toFixed(3));
+                $("tbody:eq(1) tr:eq(7) td:eq(1)").text(WeaponRaw3.toFixed(3));
+                $("tbody:eq(1) tr:eq(8) td:eq(1)").text(WeaponRaw4.toFixed(3));
+                $("tbody:eq(1) tr:eq(9) td:eq(1)").text(WeaponRaw5.toFixed(3));
+                $("tbody:eq(1) tr:eq(10) td:eq(1)").text(HouseRaw1.toFixed(3));
+                $("tbody:eq(1) tr:eq(11) td:eq(1)").text(HouseRaw2.toFixed(3));
+                $("tbody:eq(1) tr:eq(12) td:eq(1)").text(HouseRaw3.toFixed(3));
+                $("tbody:eq(1) tr:eq(13) td:eq(1)").text(HouseRaw4.toFixed(3));
+                $("tbody:eq(1) tr:eq(14) td:eq(1)").text(HouseRaw5.toFixed(3));
+                $("tbody:eq(1) tr:eq(15) td:eq(1)").text(FoodQ1.toFixed(3));
+                $("tbody:eq(1) tr:eq(16) td:eq(1)").text(FoodQ2.toFixed(3));
+                $("tbody:eq(1) tr:eq(17) td:eq(1)").text(FoodQ3.toFixed(3));
+                $("tbody:eq(1) tr:eq(18) td:eq(1)").text(FoodQ4.toFixed(3));
+                $("tbody:eq(1) tr:eq(19) td:eq(1)").text(FoodQ5.toFixed(3));
+                $("tbody:eq(1) tr:eq(20) td:eq(1)").text(FoodQ6.toFixed(3));
+                $("tbody:eq(1) tr:eq(21) td:eq(1)").text(FoodQ7.toFixed(3));
+                $("tbody:eq(1) tr:eq(22) td:eq(1)").text(WeaponQ1.toFixed(3));
+                $("tbody:eq(1) tr:eq(23) td:eq(1)").text(WeaponQ2.toFixed(3));
+                $("tbody:eq(1) tr:eq(24) td:eq(1)").text(WeaponQ3.toFixed(3));
+                $("tbody:eq(1) tr:eq(25) td:eq(1)").text(WeaponQ4.toFixed(3));
+                $("tbody:eq(1) tr:eq(26) td:eq(1)").text(WeaponQ5.toFixed(3));
+                $("tbody:eq(1) tr:eq(27) td:eq(1)").text(WeaponQ6.toFixed(3));
+                $("tbody:eq(1) tr:eq(28) td:eq(1)").text(WeaponQ7.toFixed(3));
+                $("tbody:eq(1) tr:eq(29) td:eq(1)").text(HouseQ1.toFixed(3));
+                $("tbody:eq(1) tr:eq(30) td:eq(1)").text(HouseQ2.toFixed(3));
+                $("tbody:eq(1) tr:eq(31) td:eq(1)").text(HouseQ3.toFixed(3));
+                $("tbody:eq(1) tr:eq(32) td:eq(1)").text(HouseQ4.toFixed(3));
+                $("tbody:eq(1) tr:eq(33) td:eq(1)").text(HouseQ5.toFixed(3));
+
+                $("tbody:eq(1) tr:eq(0) td:eq(2)").text((FoodRaw1 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(1) td:eq(2)").text((FoodRaw2 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(2) td:eq(2)").text((FoodRaw3 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(3) td:eq(2)").text((FoodRaw4 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(4) td:eq(2)").text((FoodRaw5 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(5) td:eq(2)").text((WeaponRaw1 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(6) td:eq(2)").text((WeaponRaw2 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(7) td:eq(2)").text((WeaponRaw3 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(8) td:eq(2)").text((WeaponRaw4 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(9) td:eq(2)").text((WeaponRaw5 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(10) td:eq(2)").text((HouseRaw1 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(11) td:eq(2)").text((HouseRaw2 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(12) td:eq(2)").text((HouseRaw3 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(13) td:eq(2)").text((HouseRaw4 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(14) td:eq(2)").text((HouseRaw5 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(15) td:eq(2)").text((FoodQ1 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(16) td:eq(2)").text((FoodQ2 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(17) td:eq(2)").text((FoodQ3 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(18) td:eq(2)").text((FoodQ4 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(19) td:eq(2)").text((FoodQ5 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(20) td:eq(2)").text((FoodQ6 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(21) td:eq(2)").text((FoodQ7 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(22) td:eq(2)").text((WeaponQ1 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(23) td:eq(2)").text((WeaponQ2 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(24) td:eq(2)").text((WeaponQ3 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(25) td:eq(2)").text((WeaponQ4 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(26) td:eq(2)").text((WeaponQ5 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(27) td:eq(2)").text((WeaponQ6 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(28) td:eq(2)").text((WeaponQ7 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(29) td:eq(2)").text((HouseQ1 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(30) td:eq(2)").text((HouseQ2 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(31) td:eq(2)").text((HouseQ3 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(32) td:eq(2)").text((HouseQ4 * 30).toFixed(3));
+                $("tbody:eq(1) tr:eq(33) td:eq(2)").text((HouseQ5 * 30).toFixed(3));
+            };
+            $("input[type=text]").change(function () {
+                ShowResultWithoutWorker();
+                ShowResultWithOneWorker();
+            });
+            ShowResultWithoutWorker();
+            ShowResultWithOneWorker();
+        });
+
+    </script>
+}

@@ -1,0 +1,393 @@
+﻿@{
+    ViewBag.Title = "تمرین";
+}
+
+<h2>محاسبه قراردادها و زمینهای تمرین</h2>
+<hr />
+<div class="row">
+    <table class="table table-hover col-md-10">
+        <thead>
+            <tr class="bg-primary">
+                <th>زمین تمرین</th>
+                <th>کیفیت</th>
+                <th>هزینه</th>
+                <th>قدرت روزانه</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @*زمین تمرین 1*@
+                    <img src="~/Files/Images/Images/training_grounds_q4.png" height="70" alt="زمین تمرین اول" title="زمین تمرین اول" />
+                </td>
+                <td>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default ">
+                            <input type="radio" name="TrainingCamp1Level" id="Option1-0" value="0" autocomplete="off" />هیچکدام
+                        </label>
+                        <label class="btn btn-default active">
+                            <input type="radio" name="TrainingCamp1Level" id="Option1-1" value="1" autocomplete="off" checked />1
+                        </label>
+                        <label class="btn btn-default">
+                            <input type="radio" name="TrainingCamp1Level" id="Option1-2" value="2" autocomplete="off" />2
+                        </label>
+                        <label class="btn btn-default">
+                            <input type="radio" name="TrainingCamp1Level" id="Option1-3" value="3" autocomplete="off" />3
+                        </label>
+                        <label class="btn btn-default">
+                            <input type="radio" name="TrainingCamp1Level" id="Option1-4" value="4" autocomplete="off" />4
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <span>0</span>
+                    <img src="~/Files/Images/Images/gold.png" />
+                </td>
+                <td>
+                    <span>5</span>
+                    <img src="~/Files/Images/Images/train.png" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @*زمین تمرین 2*@
+                    <img src="~/Files/Images/Images/train_1_q4.png" height="70" alt="زمین تمرین دوم" title="زمین تمرین دوم" />
+                </td>
+                <td>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default active">
+                            <input type="radio" name="TrainingCamp2Level" id="Option2-0" value="0" autocomplete="off" checked />هیچکدام
+                        </label>
+                        <label class="btn btn-default ">
+                            <input type="radio" name="TrainingCamp2Level" id="Option2-1" value="1" autocomplete="off" />1
+                        </label>
+                        <label class="btn btn-default">
+                            <input type="radio" name="TrainingCamp2Level" id="Option2-2" value="2" autocomplete="off" />2
+                        </label>
+                        <label class="btn btn-default">
+                            <input type="radio" name="TrainingCamp2Level" id="Option2-3" value="3" autocomplete="off" />3
+                        </label>
+                        <label class="btn btn-default">
+                            <input type="radio" name="TrainingCamp2Level" id="Option2-4" value="4" autocomplete="off" />4
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <span>0</span>
+                    <img src="~/Files/Images/Images/gold.png" />
+                </td>
+                <td>
+                    <span>0</span>
+                    <img src="~/Files/Images/Images/train.png" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @*زمین تمرین 3*@
+                    <img src="~/Files/Images/Images/train_2_q4.png" height="70" alt="زمین تمرین سوم" title="زمین تمرین سوم" />
+                </td>
+                <td>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default active">
+                            <input type="radio" name="TrainingCamp3Level" id="Option3-0" value="0" autocomplete="off" checked />هیچکدام
+                        </label>
+                        <label class="btn btn-default ">
+                            <input type="radio" name="TrainingCamp3Level" id="Option3-1" value="1" autocomplete="off" />1
+                        </label>
+                        <label class="btn btn-default">
+                            <input type="radio" name="TrainingCamp3Level" id="Option3-2" value="2" autocomplete="off" />2
+                        </label>
+                        <label class="btn btn-default">
+                            <input type="radio" name="TrainingCamp3Level" id="Option3-3" value="3" autocomplete="off" />3
+                        </label>
+                        <label class="btn btn-default">
+                            <input type="radio" name="TrainingCamp3Level" id="Option3-4" value="4" autocomplete="off" />4
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <span>0</span>
+                    <img src="~/Files/Images/Images/gold.png" />
+                </td>
+                <td>
+                    <span>0</span>
+                    <img src="~/Files/Images/Images/train.png" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @*زمین تمرین 4*@
+                    <img src="~/Files/Images/Images/train_3_q4.png" height="70" alt="زمین تمرین چهارم" title="زمین تمرین چهارم" />
+                </td>
+                <td>
+                    @*<select id="TrainingLevel">
+                            <option value="0">هیچکدام</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>*@
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default active">
+                            <input type="radio" name="TrainingCamp4Level" id="Option4-0" value="0" autocomplete="off" checked />هیچکدام
+                        </label>
+                        <label class="btn btn-default ">
+                            <input type="radio" name="TrainingCamp4Level" id="Option4-1" value="1" autocomplete="off" />1
+                        </label>
+                        <label class="btn btn-default">
+                            <input type="radio" name="TrainingCamp4Level" id="Option4-2" value="2" autocomplete="off" />2
+                        </label>
+                        <label class="btn btn-default">
+                            <input type="radio" name="TrainingCamp4Level" id="Option4-3" value="3" autocomplete="off" />3
+                        </label>
+                        <label class="btn btn-default">
+                            <input type="radio" name="TrainingCamp4Level" id="Option4-4" value="4" autocomplete="off" />4
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <span>0</span>
+                    <img src="~/Files/Images/Images/gold.png" />
+                </td>
+                <td>
+                    <span>0</span>
+                    <img src="~/Files/Images/Images/train.png" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <div class="form-group">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="FivedayTrainingReward" name="FivedayTrainingReward" value="" checked style="float: right; margin-right: auto; margin-left: -20px" />
+                جایزه پنج روز تمرین
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        قرارداد تمرین:
+        <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-default active">
+                <input type="radio" name="TrainingContract" id="Option5-1" value="0" autocomplete="off" checked/>هیچکدام
+            </label>
+            <label class="btn btn-default ">
+                <input type="radio" name="TrainingContract" id="Option5-2" value="1" autocomplete="off"/>50 درصد
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="TrainingContract" id="Option5-3" value="2" autocomplete="off"/>90 درصد
+            </label>
+        </div>
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">
+                <h3>نتایج</h3>
+            </div>
+            <div class="panel-body">
+                <dl class="dl-horizontal  alert-success">
+                    <dt>قدرت روزانه</dt>
+                    <dd>
+                        <span>0</span>
+                        <img src="~/Files/Images/Images/train.png" width="15" height="15" />
+                    </dd>
+                    <dt>هزینه تمرین روزانه</dt>
+                    <dd>
+                        <span>0</span>
+                        <img src="~/Files/Images/Images/gold_icon.png" />
+                    </dd>
+                    <dt>دریافت مدال سرباز هر</dt>
+                    <dd><span>0</span> روز </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">
+                <h3>سود</h3>
+            </div>
+            <div class="panel-body">
+                <dl class="dl-horizontal alert-info">
+                    <dt style="width:120px">سود ماهانه</dt>
+                    <dd style="direction: ltr; text-align: right; margin-right: 150px">
+                        <img src="~/Files/Images/Images/gold_icon.png" />
+                        <span>0</span>
+                    </dd>
+                    <dt style="width:120px">سود روزانه</dt>
+                    <dd style="direction: ltr; text-align: right;margin-right:150px">
+                        <img src="~/Files/Images/Images/gold_icon.png" />
+                        <span>0</span>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script>
+        $(function () {
+            var CalculateCost = function (TrainingCamp) {
+                var TrainingCampLevel = $('input[name=TrainingCamp' + TrainingCamp + 'Level]:checked').val();
+                var Contract = $('input[name="TrainingContract"]:checked').val();
+                if (TrainingCampLevel == 0) {
+                    $('tr:eq(' + TrainingCamp + ') td:eq(2) span').text(0);
+                }
+                else {
+                    if (TrainingCamp == 1) {
+                        $('tr:eq(' + TrainingCamp + ') td:eq(2) span').text(0);
+                    }
+                    else if (TrainingCamp == 2) {
+                        if (Contract == 0) {
+                            $('tr:eq(' + TrainingCamp + ') td:eq(2) span').text(0.19);
+                        }
+                        else if (Contract == 1) {
+                            $('tr:eq(' + TrainingCamp + ') td:eq(2) span').text(0.19 / 2);
+                        }
+                        else if (Contract == 2) {
+                            $('tr:eq(' + TrainingCamp + ') td:eq(2) span').text(0.19 / 10);
+                        }
+                    }
+                    else if (TrainingCamp == 3) {
+                        if (Contract == 0) {
+                            $('tr:eq(' + TrainingCamp + ') td:eq(2) span').text(0.89);
+                        }
+                        else if (Contract == 1) {
+                            $('tr:eq(' + TrainingCamp + ') td:eq(2) span').text(0.89 / 2);
+                        }
+                        else if (Contract == 2) {
+                            $('tr:eq(' + TrainingCamp + ') td:eq(2) span').text(0.89 / 10);
+                        }
+                    }
+                    else if (TrainingCamp == 4) {
+                        if (Contract == 0) {
+                            $('tr:eq(' + TrainingCamp + ') td:eq(2) span').text(1.79);
+                        }
+                        else if (Contract == 1) {
+                            $('tr:eq(' + TrainingCamp + ') td:eq(2) span').text(1.79 / 2);
+                        }
+                        else if (Contract == 2) {
+                            $('tr:eq(' + TrainingCamp + ') td:eq(2) span').text(1.79 / 10);
+                        }
+                    }
+                }
+            };
+            var TrainingCalculate = function (TrainingCamp) {
+                var TrainingCampLevel = $('input[name=TrainingCamp' + TrainingCamp + 'Level]:checked').val();
+                var Contract = $('input[name="TrainingContract"]:checked').val();
+                if (TrainingCampLevel) {
+                    //تمرین روزانه
+                    var DailyTraining;
+                    if (TrainingCamp == 1) {
+                        DailyTraining = TrainingCampLevel * 5;
+                    }
+                    else if (TrainingCamp == 2) {
+                        DailyTraining = TrainingCampLevel * 2.5;
+                    }
+                    else if (TrainingCamp == 3) {
+                        DailyTraining = TrainingCampLevel * 5;
+                    }
+                    else if (TrainingCamp == 4) {
+                        DailyTraining = TrainingCampLevel * 10;
+                    }
+                    $('tr:eq(' + TrainingCamp + ') td:eq(3) span').text(DailyTraining);
+                    //هزینه
+                    CalculateCost(TrainingCamp);
+                }
+            };
+            //محاسبه هزینه ها پس از تغییر قرارداد تمرین
+            var ContractCalculate = function () {
+                //محاسبه هزینه های زمین تمرین 1 تا 4
+                CalculateCost(1);
+                CalculateCost(2);
+                CalculateCost(3);
+                CalculateCost(4);
+            };
+            //محاسبه نتایج و سود
+            var CalculateResult = function () {
+                var dailyTraining = Number($('tr:eq(1) td:eq(3)').text()) + Number($('tr:eq(2) td:eq(3)').text()) + Number($('tr:eq(3) td:eq(3)').text()) + Number($('tr:eq(4) td:eq(3)').text());
+                //var dailyCost = parseFloat($('tr:eq(1) td:eq(2)').text()) + parseFloat($('tr:eq(2) td:eq(2)').text()) + parseFloat($('tr:eq(3) td:eq(2)').text()) + parseFloat($('tr:eq(4) td:eq(2)').text());
+                var dailyCost = Number($('tr:eq(1) td:eq(2)').text()) + Number($('tr:eq(2) td:eq(2)').text()) + Number($('tr:eq(3) td:eq(2)').text()) + Number($('tr:eq(4) td:eq(2)').text());
+                //نمایش قدرت روزانه
+                if ($('input[name=FivedayTrainingReward]').prop('checked'))
+                    dailyTraining = dailyTraining + 1.8;
+                $('dl:eq(0) dd:eq(0) span').text(dailyTraining);
+                //نمایش هزینه تمرین روزانه
+                $('dl:eq(0) dd:eq(1) span').text(dailyCost);
+                //دریافت مدال سرباز هر
+                $('dl:eq(0) dd:eq(2) span').text(Math.ceil(250 / dailyTraining));
+
+                //محاسبه سود ماهانه
+                var Contract = $('input[name="TrainingContract"]:checked').val();
+                if (Contract) {
+                    var ContractCost;
+                    if (Contract == 0)
+                        ContractCost = 0;
+                    else if (Contract == 1)
+                        ContractCost = 25;
+                    else if (Contract == 2)
+                        ContractCost = 55;
+                    var income = ((dailyTraining * 30) / 250) * 5;
+                    var profit = income - ((dailyCost * 30) + ContractCost);
+                    $('dl:eq(1) dd:eq(0) span').text(profit.toFixed(5));
+                    //محاسبه سود روزانه
+                    $('dl:eq(1) dd:eq(1) span').text((profit / 30).toFixed(5));
+                }
+            };
+
+            //محاسبه نتایج اولیه
+            CalculateResult();
+
+            //زمین تمرین 1
+            $(document).on('change', 'input:radio[id^="Option1-"]', function (event) {
+                TrainingCalculate(1);
+            });
+            //زمین تمرین 2
+            $(document).on('change', 'input:radio[id^="Option2-"]', function (event) {
+                TrainingCalculate(2);
+            });
+            //زمین تمرین 3
+            $(document).on('change', 'input:radio[id^="Option3-"]', function (event) {
+                TrainingCalculate(3);
+            });
+            //زمین تمرین 4
+            $(document).on('change', 'input:radio[id^="Option4-"]', function (event) {
+                TrainingCalculate(4);
+            });
+            //محاسبه هزینه ها پس از تغییر قرارداد
+            $(document).on('change', 'input:radio[id^="Option5-"]', function (event) {
+                ContractCalculate();
+            });
+            // محاسبه نتایج پس از تفییر هر کدام از ورودیها
+            $(document).on('change', 'input:radio', function (event) {
+                CalculateResult();
+            });
+            //محاسبه نتایج پس از تفییر چک باکس جایزه پنج روز کار
+            $('input[name=FivedayTrainingReward]').change(function () {
+                CalculateResult();
+            });
+        });
+    </script>
+}
+
+@section Styles{
+    <style>
+        .table tbody > tr > td {
+            vertical-align: middle;
+        }
+
+        td {
+            vertical-align: middle;
+        }
+    </style>
+
+}

@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "مدیریت کاربران";
+}
+
+<h2>مدیریت کاربران</h2>
+
+<section class="row">
+    <div class="col-sm-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">
+                <h3>مدیریت کاربران</h3>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li>@Html.ActionLink("کاربران", "AllUsers", "Identity")</li>
+                    <li>@Html.ActionLink("گروه ها", "AllRoles", "Identity")</li>
+                    <li>@Html.ActionLink("گروه های کاربران", "AllUsersRoles", "Identity")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

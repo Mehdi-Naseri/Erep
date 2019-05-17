@@ -1,0 +1,62 @@
+﻿@model Erep.DomainClasses.ViewModels.ContactViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@*<h2>Create</h2>*@
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h3>پیشنهاد</h3>
+        لطفا نظرات و پیشنهادات خود را با ما در میان بگذارید.
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control col-md-2" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Message, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Message, 10, 35, new { @class = "form-control" , style = "width:300px;max-width:1200px" })
+                @Html.ValidationMessageFor(model => model.Message)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AttachmentFile, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.AttachmentName)*@
+                @Html.TextBoxFor(model => model.AttachmentFile, new { type = "file" , @class = "form-control" })
+                @*<input type="file" name="file1" id="file1" multiple="multiple" class="form-control col-md-4">*@
+                @Html.ValidationMessageFor(model => model.AttachmentFile)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Email,  new { @class = "form-control col-md-5" , dir="ltr" })
+                @*@Html.Label("test", new { @class = "control-label" })*@
+                <span class="alert-warning">(اختیاری)</span>
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="ارسال" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+

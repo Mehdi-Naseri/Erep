@@ -1,0 +1,104 @@
+﻿/*////////////////////////////////////////////////////////////////
+//                    CSS by Mehdi Naseri                       //
+////////////////////////////////////////////////////////////////*/
+
+body {
+    font-family: Tahoma;
+    font-size: 13px;
+    background-image: url("../../Files/Images/Images/Background.png");
+}
+
+.jumbotron{
+    box-shadow: -8px 10px 9px 4px rgba(0, 0, 0,0.7);
+}
+
+.panel {
+    border-radius: 8px;
+    box-shadow: -8px 10px 9px 4px rgba(0, 0, 0,0.7);
+
+}
+
+.panel .panel{
+    border-radius: 8px;
+    box-shadow: -8px 10px 9px 4px rgb(128, 128, 128);
+}
+
+.panel .dl-horizontal{
+    border-radius: 6px;
+}
+
+.panel .panel{
+    background-image: url("../../Files/Images/Images/Background2.png");
+    padding-right : 20px;
+    padding-left : 10px;
+}
+
+/*////////////////////////////////////////////////////////////////
+//           جهت تغيير رنگ منو اول بالای صفحه                  //
+////////////////////////////////////////////////////////////////*/
+.navbar-inverse {
+    /*background-color: rgb(33, 35, 76);*/
+    /*کمی روشنتر*/
+    /*background-color: rgb(44, 47, 116);*/
+    background-color: darkgreen;
+}
+
+.navbar .navbar-nav > li > a:hover {
+        color: #fff;
+        background-color: green;
+}
+
+.navbar .dropdown-menu > li > a,
+.navbar .dropdown-menu {
+        /*background-color: rgb(53, 56, 118);*/
+        background-color: darkgreen;
+        color: #C8C8C8;
+}
+
+    .navbar .dropdown-menu > li > a:hover {
+            color: #fff;
+            background-color: green;
+    }
+
+/*////////////////////////////////////////////////////////////////
+//                    //ضخیم کردن منوها
+////////////////////////////////////////////////////////////////*/
+
+/*.navbar a{
+    font-weight:bold;
+}
+
+.dropdown-menu > li > a {
+    font-weight:bold;
+}*/
+
+/*////////////////////////////////////////////////////////////////
+//                    //نازکتر کردن سمت چپ منو شامل ثبت نام و ورود 
+////////////////////////////////////////////////////////////////*/
+.navbar-right a{
+    font-size: small;
+}
+
+
+/*////////////////////////////////////////////////////////////////
+//                    بیشتر کردن فاصله متن صفحه از منو بالا
+////////////////////////////////////////////////////////////////*/
+.body-content {
+    margin-top: 10px;
+}
+
+/*////////////////////////////////////////////////////////////////
+//          Add asterisk after required fields
+////////////////////////////////////////////////////////////////*/
+
+.form-group.Meh-required .control-label::after {
+    color: red;
+    content: "*";
+}
+
+/*////////////////////////////////////////////////////////////////
+//          پیامهای خطا به رنگ قرمز نمایش داده شوند
+////////////////////////////////////////////////////////////////*/
+.field-validation-error {
+    color: red;
+}

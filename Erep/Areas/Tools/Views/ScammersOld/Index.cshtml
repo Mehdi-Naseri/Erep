@@ -1,0 +1,140 @@
+﻿@model IEnumerable<Erep.DomainClasses.Models.Scammer>
+
+@{
+    ViewBag.Title = "کلاهبردارها";
+}
+
+<h2>لیست کلاهبردارها</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="pull-right">
+            <a class="btn btn-success" data-modal="" href=@Url.Action("Create") id="btnCreate" style="border-color: #28a338;">
+                <span class=" glyphicon glyphicon-plus"> کلاهبردار جدید</span>
+            </a>
+        </div>
+    }
+    <div class="pull-left">
+        @*<img src="~/Files/Images/Images/excel.png" />*@
+        @(Html.Raw(Html.ActionLink("[Replace]" + "خروجی اکسل", "ExportExcel", null, new { @class = "btn btn-success", style = "border-color: #28a338;padding-top:0px;padding-bottom:0px;padding-right:0px;" }).
+                ToHtmlString().Replace("[Replace]", "<img src=\"/Files/Images/Images/excel.png\" style=\"height: 38px;\" />")))
+    </div>
+</p>
+<div class="row">
+    <table class="table table-bordered table-responsive table-hover">
+        <thead>
+            <tr>
+                <th class="text-center col-md-1">
+                    @Html.ActionLink(Html.DisplayNameFor(model => model.Name).ToString(), "Index", new { SortBy = "Name", SortOrder = ViewBag.NameSortOrder })
+                </th>
+                <th class="text-center">
+                    @Html.ActionLink(Html.DisplayNameFor(model => model.Link).ToString(), "Index", new { SortBy = "Link", SortOrder = ViewBag.LinkSortOrder })
+                </th>
+                <th>
+                    @Html.ActionLink(Html.DisplayNameFor(model => model.ReportedBy).ToString(), "Index", new { SortBy = "ReportedBy", SortOrder = ViewBag.ReportedBySortOrder })
+                </th>
+                <th>
+                    @Html.ActionLink(Html.DisplayNameFor(model => model.Description).ToString(), "Index", new { SortBy = "Description", SortOrder = ViewBag.DescriptionSortOrder })
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class ="text-center col-md-1">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td >
+                    <td style="max-width:400px" class="text-center" dir="ltr">
+                        @Html.DisplayFor(modelItem => item.Link)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReportedBy)
+                    </td>
+                    <td title="@Html.DisplayFor(modelItem => item.Description)" style="max-width:400px" >
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.Raw("<a data-modal='' href='" + Url.Action("Details") + "/" + item.Id + "' id='" + item.Id + "' title='جزئیات'> <span class='glyphicon glyphicon-search'> </span> </a>")
+                        @if (User.IsInRole("Admin") || User.IsInRole("ScammerAdmin"))
+                        {
+                            @Html.Raw("<a data-modal='' href='" + Url.Action("Edit") + "/" + item.Id + "' title='ویرایش'> <span class='glyphicon glyphicon-edit'> </span> </a>")
+                            @Html.Raw("<a data-modal='' href='" + Url.Action("Delete") + "/" + item.Id + "' title='حذف'> <span class='glyphicon glyphicon-trash'> </span> </a>")
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@*--------------------------------------------
+    ---------------- Modal  ---------------------
+    --------------------------------------------*@
+
+<div id='myModal' class='modal fade in'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script>
+        $(function () {
+            $.ajaxSetup({ cache: false });
+            $("a[data-modal]").on("click", function (e) {
+                $('#myModalContent').load(this.href, function () {
+                    $('#myModal').modal({
+                        keyboard: true
+                    }, 'show');
+                    bindForm(this);
+                });
+                return false;
+            });
+        });
+
+        function bindForm(dialog) {
+            $('form', dialog).submit(function () {
+                $('#progress').show();
+                $.ajax({
+                    url: this.action,
+                    type: this.method,
+                    data: $(this).serialize(),
+                    success: function (result) {
+                        if (result.success) {
+                            $('#myModal').modal('hide');
+                            $('#progress').hide();
+                            location.reload();
+                        } else {
+                            $('#progress').hide();
+                            $('#myModalContent').html(result);
+                            bindForm();
+                        }
+                    }
+                });
+                return false;
+            });
+        }
+    </script>
+}
+
+@section Styles{
+    <style>
+        td {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        td {
+            white-space: nowrap;
+        }
+    </style>
+
+}

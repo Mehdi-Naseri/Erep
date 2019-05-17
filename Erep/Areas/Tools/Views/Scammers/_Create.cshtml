@@ -1,0 +1,63 @@
+﻿@model Erep.ViewModels.ViewModels.ScammerViewModel
+
+<div class="modal-header alert-info">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 class="modal-title">ثبت کلاهبردار</h3>
+</div>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="modal-body">
+        @*@Html.ValidationMessage()*@
+        @Html.ValidationSummary(true)
+        <div class="form-horizontal">
+            <div class="form-group Meh-required">
+                @Html.LabelFor(m => Model.Name, new { @class = "control-label col-sm-3" })
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control required" })
+                    <div>
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group Meh-required">
+                @Html.LabelFor(m => Model.Link, new { @class = "control-label col-sm-3" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.Link, new { htmlAttributes = new { @class = "form-control", style = "max-width:400px;direction: ltr", placeholder = "http://www.erepublik.com/en/citizen/profile/7385746" } })
+                    <div>
+                        @Html.ValidationMessageFor(m => m.Link)
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Description, new { @class = "control-label col-sm-3" })
+                <div class="col-sm-9">
+                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control required" })
+                    <div>
+                        @Html.ValidationMessageFor(m => m.Description)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <span id="progress" class="text-center" style="display: none;">
+            <img src="~/Files/Images/Images/wait.gif" alt="wait" />
+            در حال ارسال ...
+        </span>
+
+        <input class="btn btn-primary" type="submit" value="ذخیره" />
+        <button class="btn btn-warning" data-dismiss="modal">بستن</button>
+    </div>
+}
+@*<script>
+    $("form").removeData("validator");
+    $("form").removeData("unobtrusiveValidation");
+    $.validator.unobtrusive.parse("form");
+</script>*@

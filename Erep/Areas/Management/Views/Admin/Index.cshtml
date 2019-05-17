@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "مدیریت وبسایت";
+}
+
+<h2>مدیریت وبسایت</h2>
+
+<section>
+    <div class="col-sm-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">
+                <h3>مدیریت کاربران</h3>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li>@Html.ActionLink("کاربران", "AllUsers", "Identity", new {area = "Management" }, null)</li>
+                    <li>@Html.ActionLink("رولهای", "AllRoles", "Identity", new {area = "Management" }, null)</li>
+                    <li>@Html.ActionLink("مدیریت دسترسیها", "AllUsersRoles", "Identity", new {area = "Management" }, null)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="col-sm-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">
+                <h3>آمار وبسایت</h3>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li>@Html.ActionLink("مشخصات بازدیدکنندگان وبسایت", "Index", "WebsiteVisitors", new {area = "Management" }, null)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="col-sm-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">
+                <h3>لاگها</h3>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li>@Html.ActionLink("لیست لاگها", "Index", "Logs", new {area = "Management" }, null)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="row"></div>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Erep.DomainClasses.ViewModelsWebApi.JobMarketViewModel>
+@{
+    ViewBag.Title = "لیست پیشنهاد های کار";
+}
+
+<h2>لیست بهترین پیشنهادهای کار</h2>
+<hr />
+<div class="row">
+    <table class="table table-bordered table-hover table-striped col-md-8" style="background-color:white">
+        <tr>
+            <th class="col-md-2 text-center">
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th class="col-md-2 text-center">
+                @Html.DisplayNameFor(model => model.Employer)
+            </th>
+            <th class="col-md-2 text-center">
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th class="col-md-2 text-center">
+                @Html.DisplayNameFor(model => model.NetSalary)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            @*<a href="">*@
+            @*<tr onclick="javascript:location.href = '@string.Concat("http://www.erepublik.com/en/economy/job-market/",item.CountryCode)'">*@
+            <tr>
+                <td>
+                    <a href="@string.Concat("http://www.erepublik.com/en/economy/job-market/",item.CountryCode)">
+                        <img src="@Url.Content(string.Concat("~/Files/Images/Flags/", item.CountryCode,".png")) " alt=@item.Country title=@item.Country />
+                        @Html.DisplayFor(modelItem => item.Country)
+                    </a>
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Employer)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Salary)
+                    <img src="~/Files/Images/Images/salary_icon.png" />
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.NetSalary)
+                    <img src="~/Files/Images/Images/salary_icon.png" />
+                </td>
+            </tr>
+            @*</a>*@
+        }
+
+    </table>
+</div>

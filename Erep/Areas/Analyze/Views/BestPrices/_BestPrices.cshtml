@@ -1,0 +1,46 @@
+﻿@model Erep.DomainClasses.ViewModelsWebApi.BestPricesCollectionViewModel
+
+<div id="PartaialViewResult">
+    <div class="row">
+        <table class="table table-bordered table-hover table-striped col-md-7" style="background-color:white">
+            <tr>
+                <th class="col-md-2 text-center">
+                    @Html.DisplayNameFor(model => model.BestPricesCollection.First().Country)
+                </th>
+                <th class="col-md-2 text-center">
+                    @Html.DisplayNameFor(model => model.BestPricesCollection.First().Unit)
+                </th>
+                <th class="col-md-1 text-center">
+                    @Html.DisplayNameFor(model => model.BestPricesCollection.First().OffersCount)
+                </th>
+                <th class="col-md-2 text-center">
+                    @Html.DisplayNameFor(model => model.BestPricesCollection.First().Price)
+                </th>
+            </tr>
+
+            @foreach (var item in Model.BestPricesCollection)
+            {
+                <tr>
+                    <td >
+                        @*@Html.DisplayFor(modelItem => item.Country)*@
+                        @*<a href="@string.Concat("http://www.erepublik.com/en/economy/job-market/",item.CountryCode)">*@
+                        <a href="@string.Concat("http://www.erepublik.com/en/economy/market/", item.CountryCode, "/", Model.ProductType, "/", Model.ProductSubType, "/citizen/0/price-asc/1")">
+                            <img src="@Url.Content(string.Concat("~/Files/Images/Flags/", item.CountryCode, ".png")) " alt=@item.Country title=@item.Country />
+                            @Html.DisplayFor(modelItem => item.Country)
+                        </a>
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Unit)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.OffersCount)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Price)
+                        <img src="~/Files/Images/Images/salary_icon.png" />
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

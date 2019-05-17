@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Erepublik</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @*جهت اضافه کردن استایلهاي جدید اضافه شده اند.*@
+    <link href="~/Content/Meh/BootstrapRtl/bootstrap-rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/Meh/MehRtLMenu.css" rel="stylesheet" />
+    <link href="~/Content/Meh/Meh.css" rel="stylesheet" />
+    @RenderSection("Styles", required: false)
+    <link rel="shortcut icon" href="~/Files/Images/Logo/erepublik-logo_Croped(20percent).ico" />
+</head>
+<body dir="rtl">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index","Home", new { area = "" })"><img src="~/Files/Images/Logo/erepublik-logo_Croped(20percent).jpg" height="25" /></a>
+                @*@Html.ActionLink("ایرپابلیک", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+            </div>
+            <div class="navbar-collapse collapse" style="font-size:18px">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("خانه", "Index", "Home", new { area = "" }, null)</li>
+
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">محاسبات<span class="caret"></span> </a>
+                        <ul class="dropdown-menu" role="menu">
+
+                            <li>@Html.ActionLink("تمرین", "Index", "Training", new { area = "Calculators" }, null)</li>
+                            <li>@Html.ActionLink("دمیج", "Index", "Damage", new { area = "Calculators" }, null)</li>
+                            <li>@Html.ActionLink("هزینه دمیج", "Index", "DamageCost", new { area = "Calculators" }, null)</li>
+                            <li>@Html.ActionLink("سود کارخانه", "Index", "CompanyProfit", new { area = "Calculators" }, null)</li>
+                            <li>@Html.ActionLink("مقایسه سود کارخانه ها", "Index", "CompaniesProfit", new { area = "Calculators" }, null)</li>
+                            @*این لینک موقتا غیر فعال شده است. *@
+                            @*<li>@Html.ActionLink("تعداد هیت", "Index", "HitNumber", new { area = "Calculators" }, null)</li>*@
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">تحلیل<span class="caret"></span> </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("بازار کار", "Index", "JobMarket", new { area = "Analyze" }, null)</li>
+                            <li>@Html.ActionLink("بازار ارز", "Index", "MonetaryMarket", new { area = "Analyze" }, null)</li>
+                            <li>@Html.ActionLink("بهترین قیمتها", "Index", "BestPrices", new { area = "Analyze" }, null)</li>
+                            @*به علت ساخته نشدن این بخش موقتا غیر فعال شده است.*@
+                            @*<li>@Html.ActionLink("تغییرات قیمتها", "Index", "Training", new { area = "Analyze" }, null)</li>*@
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="/Tools/Tools" class="dropdown-toggle" data-toggle="dropdown">اطلاعات<span class="caret"></span> </a>
+                        <ul class="dropdown-menu" role="menu">
+                            @*<li>@Html.ActionLink("کلاهبردارها", "Index", "Scammers", new { area = "Tools" }, null)</li>
+                                <li>@Html.ActionLink("کلاهبردارها 2", "Index", "Scammer", new { area = "Tools" }, null)</li>*@
+                            <li>@Html.ActionLink("کلاهبردارها", "Index", "Scammers", new { area = "Tools" }, null)</li>
+                        </ul>
+                    </li>
+                    @*به علت ساخته نشدن این بخش موقتا غیر فعال شده است.*@
+                    @*<li class="dropdown">
+                            <a href="/Tools/Tools" class="dropdown-toggle" data-toggle="dropdown">آموزش<span class="caret"></span> </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("آموزش", "Index", "Learning", new { area = "Analyze" }, null)</li>
+                            </ul>
+                        </li>*@
+                    <li>@Html.ActionLink("پیشنهاد", "Create", "Contact", new { area = "Tools" }, null)</li>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="dropdown">
+                            <a href=@Url.Action("index", "Admin", new {area = "Management" }) class="dropdown-toggle" data-toggle="dropdown">مدیریت<span class="caret"></span> </a>
+                            @*<li>@Html.ActionLink("مدیریت", "Index", "Admin", new { area = "Admin" }, null)</li>*@
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink(" کاربران", "AllUsers", "Identity", new { area = "Management" }, null)</li>
+                                <li>@Html.ActionLink("گروهها", "AllRoles", "Identity", new { area = "Management" }, null)</li>
+                                <li>@Html.ActionLink("گروههای کاربران", "AllUsersRoles", "Identity", new {area = "Management" }, null)</li>
+                                <li role="presentation" class="divider"></li>
+                                <li>@Html.ActionLink("بازدید کنندگان", "Index", "WebsiteVisitors", new { area = "Management" }, null)</li>
+                                <li>@Html.ActionLink("لاگها", "Index", "Logs", new { area = "Management" }, null)</li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <div class="row ">
+                @*<p>&copy; @DateTime.Now.Year - Erepublik</p>*@
+                <p class="text-center">
+                    <a href="https://www.erepublik.com/en/citizen/profile/7385746">virtualPersia</a> &copy; -
+                    @Html.Raw((new System.Globalization.PersianCalendar()).GetYear(DateTime.Now).ToString())
+
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("Scripts", required: false)
+    <script src="~/Scripts/Meh/MehJavaScript.js"></script>
+
+</body>
+</html>

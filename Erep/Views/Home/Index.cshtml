@@ -1,0 +1,237 @@
+﻿@{
+    ViewBag.Title = "صفحه اصلی";
+}
+
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>جمهوری مجازی</h1>
+            <p class="lead">مجموعه ابزارهای کمکی</p>
+            <img src="~/Files/Images/SlideShow/erepublik-logo.jpg" class="hidden-sm hidden-xs img-rounded img-responsive" />
+        </div>
+        <div class="col-md-6 hidden-sm hidden-xs ">
+            <div class="container" @*style="width:525px; height:350px;"*@>
+                @*<a style="float:left" href="@Url.Action(" index","home", new { area="" })">
+                *@
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <img src="~/Files/Images/SlideShow/Slide4.png" alt="eRepublik" class="img-rounded">
+                            <div class="carousel-caption">
+                                @*...*@
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="~/Files/Images/SlideShow/Slide2.jpg" alt="eRepublik" class="img-rounded">
+
+                            <div class="carousel-caption">
+                                @*...*@
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="~/Files/Images/SlideShow/Slide3.png" alt="eRepublik" class="img-rounded">
+                            <div class="carousel-caption">
+                                @*...*@
+                            </div>
+                        </div>
+                        @*...*@
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">قبلی</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">بعدی</span>
+                    </a>
+                </div>
+                @*
+                    </a>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3>محاسبات</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row" @*style="float:right" *@>
+
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <h2>تمرین</h2>
+                    <p>
+                        محاسبه قراردادها و زمینهای تمرین
+                    </p>
+                    <p>
+                        @Html.ActionLink(HttpUtility.HtmlDecode("ورود &raquo;"), "Index", "Training", new { area = "Calculators" }, new { @class = "btn btn-primary" })
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <h2>دمیج</h2>
+                    <p>
+                        محاسبه میزان دمیج بر اساس قدرت ، درجه و اسلحه
+                    </p>
+                    <p>
+                        @Html.ActionLink(HttpUtility.HtmlDecode("ورود &raquo;"), "Index", "Damage", new { area = "Calculators" }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <h2>هزینه دمیج</h2>
+                    <p>
+                        محاسبه هزینه یک میلیون دمیج
+                    </p>
+                    <p>
+                        @Html.ActionLink(HttpUtility.HtmlDecode("ورود &raquo;"), "Index", "DamageCost", new { area = "Calculators" }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <h2>سود کارخانه</h2>
+                    <p>
+                        محاسبه سود هر کدام از کارخانه ها
+                    </p>
+                    <p>
+                        @Html.ActionLink(HttpUtility.HtmlDecode("ورود &raquo;"), "Index", "CompanyProfit", new { area = "Calculators" }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <h3>مقایسه سود کارخانه ها</h3>
+                    <p>
+                        مقایسه سود کارخانه ها با یکدیگر
+                    </p>
+                    <p>
+                        @Html.ActionLink(HttpUtility.HtmlDecode("ورود &raquo;"), "Index", "CompaniesProfit", new { area = "Calculators" }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+            @*این بخش موقتا غیر فعال شده است.*@
+            @*<div class="col-md-3">
+                    <div class="panel panel-default">
+                        <h2>تعداد هیت</h2>
+                        <p>
+                            محاسبه تعداد هیت جهت کشتن حربف
+                        </p>
+                        <p>
+                            @Html.ActionLink(HttpUtility.HtmlDecode("ورود &raquo;"), "Index", "HitNumber", new { area = "Calculators" }, new { @class = "btn btn-primary" })
+                    </div>
+                </div>*@
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3>تحلیل</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <h2>بازار کار</h2>
+                    <p>
+                        بالاترین پیشنهادهای  کار در جهان
+                    </p>
+                    <p>
+                        @Html.ActionLink(HttpUtility.HtmlDecode("ورود &raquo;"), "Index", "JobMarket", new { area = "Analyze" }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <h2>بازار ارز</h2>
+                    <p>
+                        تغییرات قیمت ارز در 24 ساعت گذشته
+                    </p>
+                    <p>
+                        @Html.ActionLink(HttpUtility.HtmlDecode("ورود &raquo;"), "Index", "MonetaryMarket", new { area = "Analyze" }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <h2>بهترین قیمتها</h2>
+                    <p>
+                        پایینترین قیمت کالاها در جهان
+                    </p>
+                    <p>
+                        @Html.ActionLink(HttpUtility.HtmlDecode("ورود &raquo;"), "Index", "BestPrices", new { area = "Analyze" }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+            @*به علت ساخته نشدن این بخش موقتا غیر فعال شده است.*@
+            @*<div class="col-md-3">
+                    <div class="panel panel-default">
+                        <h2>تغییرات قیمتها</h2>
+                        <p>
+                        </p>
+                        <p>
+                            @Html.ActionLink(HttpUtility.HtmlDecode("ورود &raquo;"), "Index", "PriceChanges", new { area = "Analyze" }, new { @class = "btn btn-primary" })
+                    </div>
+                </div>*@
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3>اطلاعات</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <h2>کلاهبردارها</h2>
+                    <p>
+                        لیست کلاهبرداران شناخته شده
+                    </p>
+                    <p>
+                        @Html.ActionLink(HttpUtility.HtmlDecode("ورود &raquo;"), "Index", "Scammers", new { area = "Tools" }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Styles{
+    <style>
+    </style>
+}
+
+@section Scripts{
+    <script>
+        @*       $(function () {
+                $(".btn.btn-primary").hover(
+                    function () {
+                        $(this).stop().animate({
+                            width: 150,
+                            height: 110,
+                            backgroundColor: "lightBlue",
+                            fontSize: "3em"
+                        });
+                    }, function () {
+                        $(this).stop().animate({
+                            width: 100,
+                            height: 100,
+                            backgroundColor: "silver",
+                            fontSize: "1em"
+                        });
+                    });
+            });*@
+    </script>
+}

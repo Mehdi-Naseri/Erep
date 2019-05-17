@@ -1,0 +1,169 @@
+﻿@model IEnumerable<Identity.ViewModels.ViewModels.UserRoleViewModel>
+
+@{
+    ViewBag.Title = "گروه های کاربران";
+}
+
+<h2>گروه های کاربران</h2>
+
+
+<div class="k-rtl">
+    <div id="grid"></div>
+</div>
+
+@*--------------------------------------------
+    ---------------- Modal  ---------------------
+    --------------------------------------------*@
+
+<div id="myModal" class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="myModalContent"></div>
+        </div>
+    </div>
+</div>
+
+
+@section Styles{
+    <link href="~/Content/kendo/2015.1.318/kendo.common.min.css" rel="stylesheet"/>
+    <link href="~/Content/kendo/2015.1.318/kendo.blueopal.min.css" rel="stylesheet"/>
+    <link href="~/Content/kendo/2015.1.318/kendo.rtl.min.css" rel="stylesheet"/>
+}
+@section Scripts{
+    <script src="~/Scripts/jszip/jszip.min-2.5.0.js"></script>
+    <script src="~/Scripts/kendo/2015.1.318_Complete/kendo.all.min.js"></script>
+    <script src="~/Scripts/kendo/KendoFarsi/kendo.fa-IR.js"></script>
+
+    <script>
+        $(function() {
+            var GridDataSource = new kendo.data.DataSource({
+                type: "json",
+                transport: {
+                    read: {
+                        url: "@Url.Action("AllUsersRolesRead")",
+                        dataType: "json",
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8",
+                    },
+                    //parameterMap: function (options) {
+                    //    return JSON.stringify(options);
+                    //}
+                },
+                schema: {
+                    model: {
+                        id: "Id",
+                        fields: {
+                            Id: { type: "string" },
+                            UserName: { type: "string" },
+                            RoleName: { type: "string" }
+                        }
+                    }
+                },
+                error: function(e) {
+                    alert(e.errorThrown);
+                },
+                pageSize: 10
+            });
+
+            $("#grid").kendoGrid({
+                dataSource: GridDataSource,
+                autoBind: true,
+                selectable: "row",
+                navigatable: true,
+                //height: 430,
+                //groupable: true,
+                scrollable: false,
+                sortable: true,
+                filterable: true,
+                resizable: true,
+                pageable: {
+                    refresh: true,
+                    pageSizes: true,
+                    input: true,
+                    numeric: false
+                },
+                toolbar: [
+                    { name: "Create", template: "<a class='k-grid-Create' data-modal=''><span class='btn btn-primary'><span class='glyphicon glyphicon-plus'></span> اضافه کردن کاربر به گروه </span></a>" },
+                    { name: "excel", template: "<a class='k-grid-excel' style='margin-right:3px;float:left' ><span class='btn btn-success'><span class='k-icon k-i-excel'></span> خروجی اکسل </span></a>" },
+                    //{ name: "pdf", template: "<a class='k-grid-pdf' style='margin-right:3px;float:left' ><span class='btn btn-success'><span class='k-icon k-i-pdf'></span> خروجی PDF </span></a>" }
+                ],
+
+                columns: [
+                    { field: "Id", title: "Code", width: "70px", hidden: true },
+                    { field: "UserName", title: "نام کاربری" },
+                    { field: "RoleName", title: "نام گروه" },
+                    {
+                        command: [
+                            //{ name: "Details", click: Details, template: "<a class='k-grid-Details' data-modal=''><span class='btn btn-info glyphicon glyphicon-search' ></span></a>" },
+                            //{ name: "Edit", click: Edit, template: "<a class='k-grid-Edit' data-modal=''><span class='btn btn-primary glyphicon glyphicon-edit' ></span></a>" },
+                            { name: "Delete", click: Delete, template: "<a class='k-grid-Delete' data-modal=''><span class='btn btn-danger glyphicon glyphicon-trash' ></span></a>" }
+                        ],
+                        title: " ",
+                        width: "50px"
+                    }
+                ],
+                excel: {
+                    allPages: true
+                },
+            });
+            @*function Details(e) {
+                e.preventDefault();
+                var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+                var Address = "@Url.Action("Details")" + "/" + dataItem.Id;
+                ShowModal(Address);
+            };*@
+            @*function Edit(e) {
+                e.preventDefault();
+                var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+                var Address = "@Url.Action("EditUser")" + "/" + dataItem.Id;
+                ShowModal(Address);
+            };*@
+            function Delete(e) {
+                e.preventDefault();
+                var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+                var Address = "@Url.Action("DeleteUserRole")" + "?userName=" + dataItem.UserName + "&roleName=" + dataItem.RoleName;
+                ShowModal(Address);
+            };
+
+            $("body .k-grid-Create").on("click", function() {
+                var Address = "@Url.Action("AddUserRole")";
+                ShowModal(Address);
+            });
+            $.ajaxSetup({ cache: false });
+        });
+
+        //نمایش مودال
+        function ShowModal(Address) {
+            $('#myModalContent').load(Address, function() {
+                $('#myModal').modal({
+                    keyboard: true
+                }, 'show');
+                bindForm(this);
+            });
+            return false;
+        };
+
+        function bindForm(dialog) {
+            $('form', dialog).submit(function() {
+                $('#progress').show();
+                $.ajax({
+                    url: this.action,
+                    type: this.method,
+                    data: $(this).serialize(),
+                    success: function(result) {
+                        if (result.success) {
+                            $('#myModal').modal('hide');
+                            $('#progress').hide();
+                            location.reload();
+                        } else {
+                            $('#progress').hide();
+                            $('#myModalContent').html(result);
+                            bindForm();
+                        }
+                    }
+                });
+                return false;
+            });
+        };
+    </script>
+}

@@ -1,0 +1,139 @@
+﻿<div class="form-horizontal">
+    <div class="form-group">
+        <fieldset>
+            @*<legend class="text-success">مالیات</legend>*@
+            @Html.Label("WorkingTax", "مالیات کار", new { @class = "control-label col-md-2" })
+            <div class="col-md-2 M-TextBoxHolder">
+                @Html.TextBox("WorkingTax", 1.80, new { @class = "form-control" })
+            </div>
+        </fieldset>
+    </div>
+    <div class="form-group">
+        <fieldset>
+            @*<legend class="text-success">بونس</legend>*@
+            @Html.Label("FoodBounes", "درصد بونس غذا", new { @class = "control-label col-md-2" })
+            <div class="col-md-2 M-TextBoxHolder">
+                @Html.TextBox("FoodBounes", 80, new { @class = "form-control M-Bounes" })
+            </div>
+            @Html.Label("WeaponBounes", "درصد بونس اسلحه", new { @class = "control-label col-md-2" })
+            <div class="col-md-2 M-TextBoxHolder">
+                @Html.TextBox("WeaponBounes", 60, new { @class = "form-control M-Bounes" })
+            </div>
+            @Html.Label("HouseBounes", "درصد بونس خانه", new { @class = "control-label col-md-2" })
+            <div class="col-md-2 M-TextBoxHolder">
+                @Html.TextBox("HouseBounes", 20, new { @class = "form-control M-Bounes" })
+            </div>
+        </fieldset>
+    </div>
+    <div class="form-group">
+        <fieldset>
+            @*<legend class="text-success">قیمت مواد اولیه</legend>*@
+            @Html.Label("FoodRawPrice", "قیمت مواد اولیه غذا", new { @class = "control-label col-md-2" })
+            <div class="col-md-2 M-TextBoxHolder">
+                @Html.TextBox("FoodRawPrice", 0.03, new { @class = "form-control" })
+            </div> 
+            @Html.Label("WeaponRawPrice", "قیمت مواد اولیه اسلحه", new { @class = "control-label col-md-2" })
+            <div class="col-md-2 M-TextBoxHolder">
+                @Html.TextBox("WeaponRawPrice", 0.03, new { @class = "form-control" })
+            </div>
+            @Html.Label("HouseRawPrice", "قیمت مواد اولیه خانه", new { @class = "control-label col-md-2" })
+            <div class="col-md-2 M-TextBoxHolder">
+                @Html.TextBox("HouseRawPrice", null, new { @class = "form-control" })
+            </div>
+        </fieldset>
+    </div>
+    <div class="form-group">
+        <fieldset>
+            @*<legend class="text-success">قیمت غذا</legend>*@
+                @Html.Label("FoodPriceQ1", "قیمت غذا کیفیت 1", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("FoodPriceQ1", 0.05, new { @class = "form-control" })
+                </div>
+                @Html.Label("FoodPriceQ2", "قیمت غذا کیفیت 2", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("FoodPriceQ2", 0.10, new { @class = "form-control" })
+                </div>
+                @Html.Label("FoodPriceQ3", "قیمت غذا کیفیت 3", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("FoodPriceQ3", 0.15, new { @class = "form-control" })
+                </div>
+                @Html.Label("FoodPriceQ4", "قیمت غذا کیفیت 4", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("FoodPriceQ4", 0.20, new { @class = "form-control" })
+                </div>
+                @Html.Label("FoodPriceQ5", "قیمت غذا کیفیت 5", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("FoodPriceQ5", 0.30, new { @class = "form-control" })
+                </div>
+                @Html.Label("FoodPriceQ6", "قیمت غذا کیفیت 6", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("FoodPriceQ6", 0.40, new { @class = "form-control" })
+                </div>
+                @Html.Label("FoodPriceQ7", "قیمت غذا کیفیت 7", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("FoodPriceQ7", 0.80, new { @class = "form-control" })
+                </div>
+        </fieldset>
+    </div>
+
+    <div class="form-group">
+        <fieldset>
+            @*<legend class="text-success">قیمت اسلحه</legend>*@
+                @Html.Label("WeaponPriceQ1", "قیمت اسلحه کیفیت 1", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("WeaponPriceQ1", 0.04, new { @class = "form-control" })
+                </div>
+                @Html.Label("WeaponPriceQ2", "قیمت اسلحه کیفیت 2", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("WeaponPriceQ2", 0.13, new { @class = "form-control" })
+                </div>
+                @Html.Label("WeaponPriceQ3", "قیمت اسلحه کیفیت 3", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("WeaponPriceQ3", 0.25, new { @class = "form-control" })
+                </div>
+                @Html.Label("WeaponPriceQ4", "قیمت اسلحه کیفیت 4", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("WeaponPriceQ4", 0.47, new { @class = "form-control" })
+                </div>
+                @Html.Label("WeaponPriceQ5", "قیمت اسلحه کیفیت 5", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("WeaponPriceQ5", 1.22, new { @class = "form-control" })
+                </div>
+                @Html.Label("WeaponPriceQ6", "قیمت اسلحه کیفیت 6", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("WeaponPriceQ6", 3.12, new { @class = "form-control" })
+                </div>
+                @Html.Label("WeaponPriceQ7", "قیمت اسلحه کیفیت 7", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("WeaponPriceQ7", 6.00, new { @class = "form-control" })
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="form-group">
+        <fieldset>
+            @*<legend class="text-success">قیمت خانه</legend>*@
+                @Html.Label("HousePriceQ1", "قیمت خانه کیفیت 1", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("HousePriceQ1", null, new { @class = "form-control" })
+                </div>
+                @Html.Label("HousePriceQ2", "قیمت خانه کیفیت 2", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("HousePriceQ2", null, new { @class = "form-control" })
+                </div>
+                @Html.Label("HousePriceQ3", "قیمت خانه کیفیت 3", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("HousePriceQ3", null, new { @class = "form-control" })
+                </div>
+                @Html.Label("HousePriceQ4", "قیمت خانه کیفیت 4", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("HousePriceQ4", null, new { @class = "form-control" })
+                </div>
+                @Html.Label("HousePriceQ5", "قیمت خانه کیفیت 5", new { @class = "control-label col-md-2" })
+                <div class="col-md-2 M-TextBoxHolder">
+                    @Html.TextBox("HousePriceQ5", null, new { @class = "form-control" })
+                </div>
+        </fieldset>
+    </div>
+</div>
+
